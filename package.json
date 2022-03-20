@@ -1,0 +1,24 @@
+{
+  "name": "panel",
+  "version": "1.0.0",
+  "description": "A simple LMS built with the MERN stack.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "LMS"
+  ],
+  "author": "Nuri Can",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0"
+  }
+}
