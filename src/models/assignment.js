@@ -14,7 +14,7 @@ const assignmentSchema = new Schema({
         type: Date,
         required: true,
     },
-    course: {
+    courseId: {
         type: Schema.Types.ObjectId,
         ref: "Course",
         required: true,

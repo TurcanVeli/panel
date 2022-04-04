@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-function authenticateToken(req, res, next) {
+const authenticateToken = (req, res, next) => {
     const token = req.cookies.token;
 
     if (token == null) return res.sendStatus(401);
@@ -13,6 +13,6 @@ function authenticateToken(req, res, next) {
     } catch (error) {
         res.sendStatus(401);
     }
-}
+};
 
 module.exports = authenticateToken;

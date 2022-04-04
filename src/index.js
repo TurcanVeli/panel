@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/userRoutes");
 const courseRouter = require("./routes/courseRoutes");
+const assignmentRouter = require("./routes/assignmentRoutes");
 const cookieParser = require("cookie-parser");
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(cookieParser());
 app.use("/api/auth", userRouter);
 app.use("/api/course", courseRouter);
+app.use("/api/course", assignmentRouter);
 
 console.log("Connecting to database...");
 mongoose
