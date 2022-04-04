@@ -12,19 +12,22 @@ const courseSchema = new Schema({
     },
     instructor: {
         type: Schema.Types.ObjectId,
-        ref: "Instructor",
         required: true,
     },
-    students: {
-        type: Schema.Types.ObjectId,
-        ref: "Student",
-        default: [],
-    },
-    assignments: {
-        type: Schema.Types.ObjectId,
-        ref: "Assignment",
-        default: [],
-    },
+    students: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Student",
+            default: [],
+        },
+    ],
+    assignments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Assignment",
+            default: [],
+        },
+    ],
     files: {
         type: Array,
         default: [],
