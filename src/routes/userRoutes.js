@@ -50,7 +50,6 @@ router.post("/register", async (req, res) => {
         );
 
         await user.save();
-        console.log(user);
 
         res
             .status(201)
@@ -100,15 +99,6 @@ router.post("/login", async (req, res) => {
             .json({ message: "User logged in successfully" });
     } catch (err) {
         res.status(500).json({ error: err.message });
-    }
-});
-
-router.post("/logout", (req, res) => {
-    if (req.cookies.token) {
-        res.clearCookie("token");
-        res.json({ message: "User logged out successfully" });
-    } else {
-        res.json({ message: "No user logged in" });
     }
 });
 
