@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const assignmentSchema = new Schema({
-    name: {
+const announcementSchema = new Schema({
+    title: {
         type: String,
         required: true,
     },
@@ -10,9 +10,13 @@ const assignmentSchema = new Schema({
         type: String,
         default: "",
     },
-    dueDate: {
+    publisher: {
+        type: Schema.Types.ObjectId,
+        ref: "Instructor",
+    },
+    postDate: {
         type: Date,
-        required: true,
+        default: Date.now,
     },
     files: {
         type: Array,
@@ -20,4 +24,4 @@ const assignmentSchema = new Schema({
     },
 });
 
-module.exports = { assignmentSchema };
+module.exports = { announcementSchema };

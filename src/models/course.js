@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const { assignmentSchema } = require("../models/assignment");
+const { announcementSchema } = require("./announcement");
 
 const courseSchema = new Schema({
     name: {
@@ -26,6 +27,12 @@ const courseSchema = new Schema({
     assignments: [
         {
             type: assignmentSchema,
+            default: [],
+        },
+    ],
+    announcements: [
+        {
+            type: announcementSchema,
             default: [],
         },
     ],

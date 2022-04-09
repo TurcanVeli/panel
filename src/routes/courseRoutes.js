@@ -23,12 +23,13 @@ router.post(
     }
 );
 
-router.get("", [authenticateToken], async (req, res) => {
+router.get("/", [authenticateToken], async (req, res) => {
     const student = await Student.findById(res.locals.userId);
     const instructor = await Instructor.findById(res.locals.userId);
     const user = student || instructor;
+    
+    const courses = await Course.find({ _id: { $in: user.courses } });
 
-    const courses = user.courses;
     return res.status(200).json({ courses });
 });
 
@@ -38,6 +39,19 @@ router.get(
     async (req, res) => {
         const course = res.locals.course;
         return res.status(200).json({ course });
+    }
+);
+
+router.delete(
+    "/:courseId",
+    [authenticateToken, verifyCourseExists, verifyInstructor],
+    async (req, res) => {
+        const course = res.locals.course;
+        const user = await Instructor.findById(res.locals.userId);
+        user.courses.pull(course);
+        await user.save();
+        await course.remove();
+        return res.status(200).json({ message: "Course deleted successfully" });
     }
 );
 

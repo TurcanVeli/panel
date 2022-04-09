@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const { courseSchema } = require("../models/course");
+const Schema = mongoose.Schema;
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     },
     courses: [
         {
-            type: courseSchema,
+            type: Schema.Types.ObjectId,
             default: [],
         },
     ],
