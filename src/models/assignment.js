@@ -14,11 +14,6 @@ const assignmentSchema = new Schema({
         type: Date,
         required: true,
     },
-    courseId: {
-        type: Schema.Types.ObjectId,
-        ref: "Course",
-        required: true,
-    },
     files: {
         type: Array,
         default: [],

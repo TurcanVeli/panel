@@ -36,10 +36,9 @@ router.get(
     "/:courseId/assignment/:assignmentId",
     [authenticateToken, verifyCourseExists],
     async (req, res) => {
-        const courseId = req.params.courseId;
         const assignmentId = req.params.assignmentId;
 
-        const course = await Course.findById(courseId);
+        const course = res.locals.course;
 
         const assignment = course.assignments.id(assignmentId);
         if (!assignment) {
@@ -47,6 +46,17 @@ router.get(
         }
 
         res.status(200).json(assignment);
+    }
+);
+
+router.get(
+    "/:courseId/assignments",
+    [authenticateToken, verifyCourseExists],
+    async (req, res) => {
+
+        const course = res.locals.course;
+
+        res.status(200).json(course.assignments);
     }
 );
 

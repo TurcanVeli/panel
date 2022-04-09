@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { courseSchema } = require("../models/course");
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -10,20 +11,19 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    password: {
+    passwordHash: {
         type: String,
         required: true,
     },
-    isInstructor: {
-        type: Boolean,
-        default: false,
-    },
-    courses: {
-        type: Array,
-        default: [],
-    },
+    courses: [
+        {
+            type: courseSchema,
+            default: [],
+        },
+    ],
 });
 
-const User = mongoose.model("User", userSchema);
+const Student = mongoose.model("Student", userSchema);
+const Instructor = mongoose.model("Instructor", userSchema);
 
-module.exports = { User, userSchema };
+module.exports = { Instructor, Student, userSchema };

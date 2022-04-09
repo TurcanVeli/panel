@@ -15,8 +15,8 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 app.use("/api/auth", userRouter);
-app.use("/api/course", courseRouter);
-app.use("/api/course", assignmentRouter);
+app.use("/api/courses", courseRouter);
+app.use("/api/courses", assignmentRouter);
 
 console.log("Connecting to database...");
 mongoose

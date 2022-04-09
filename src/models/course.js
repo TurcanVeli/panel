@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const { assignmentSchema } = require("../models/assignment");
 
 const courseSchema = new Schema({
     name: {
@@ -10,21 +11,21 @@ const courseSchema = new Schema({
         type: String,
         default: "",
     },
-    instructor: {
-        type: Schema.Types.ObjectId,
-        required: true,
-    },
+    instructors: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Instructor",
+        },
+    ],
     students: [
         {
             type: Schema.Types.ObjectId,
             ref: "Student",
-            default: [],
         },
     ],
     assignments: [
         {
-            type: Schema.Types.ObjectId,
-            ref: "Assignment",
+            type: assignmentSchema,
             default: [],
         },
     ],

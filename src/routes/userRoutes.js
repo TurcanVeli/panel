@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const { User } = require("../models/user");
+const { Instructor, Student } = require("../models/user");
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -10,30 +10,39 @@ router.post("/register", async (req, res) => {
 
         if (
             name === "" ||
-      email === "" ||
-      password === "" ||
-      typeof isInstructor === "undefined"
+            email === "" ||
+            password === "" ||
+            typeof isInstructor === "undefined"
         ) {
             return res.status(400).json({ msg: "Please enter all fields" });
         }
 
-        const oldUser = await User.findOne({ email: email });
+        const oldStudent = await Student.findOne({ email: email });
+        const oldInstructor = await Instructor.findOne({ email: email });
 
-        if (oldUser) {
+        if (oldStudent || oldInstructor) {
             return res.status(400).json({ msg: "User already exists" });
         }
 
         const passwordHash = bcrypt.hashSync(password, 10);
 
-        const user = new User({
-            name,
-            email,
-            password: passwordHash,
-            isInstructor,
-        });
+        let user = null;
+        if (isInstructor) {
+            user = new Instructor({
+                name,
+                email,
+                passwordHash: passwordHash,
+            });
+        } else {
+            user = new Student({
+                name,
+                email,
+                passwordHash: passwordHash,
+            });
+        }
 
         const token = jwt.sign(
-            { userId: user._id, isInstructor: user.isInstructor },
+            { userId: user._id, isInstructor: isInstructor },
             process.env.TOKEN_SECRET,
             {
                 expiresIn: "1h",
@@ -41,6 +50,7 @@ router.post("/register", async (req, res) => {
         );
 
         await user.save();
+        console.log(user);
 
         res
             .status(201)
@@ -59,20 +69,25 @@ router.post("/login", async (req, res) => {
             return res.status(400).json({ msg: "Please enter all fields" });
         }
 
-        const user = await User.findOne({ email: email });
+        const student = await Student.findOne({ email: email });
+        const instructor = await Instructor.findOne({ email: email });
 
-        if (!user) {
+        if (!student && !instructor) {
             return res.status(400).json({ msg: "User does not exist" });
         }
 
-        const isMatch = bcrypt.compareSync(password, user.password);
+        let user = student || instructor;
+
+        const isMatch = bcrypt.compareSync(password, user.passwordHash);
 
         if (!isMatch) {
             return res.status(400).json({ msg: "Wrong password" });
         }
 
+        const isInstructor = user instanceof Instructor;
+
         const token = jwt.sign(
-            { userId: user._id, isInstructor: user.isInstructor },
+            { userId: user._id, isInstructor: isInstructor },
             process.env.TOKEN_SECRET,
             {
                 expiresIn: "1h",
