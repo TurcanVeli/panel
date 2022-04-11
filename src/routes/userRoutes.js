@@ -14,14 +14,14 @@ router.post("/register", async (req, res) => {
             password === "" ||
             typeof isInstructor === "undefined"
         ) {
-            return res.status(400).json({ msg: "Please enter all fields" });
+            return res.status(400).json({ message: "Please enter all fields" });
         }
 
         const oldStudent = await Student.findOne({ email: email });
         const oldInstructor = await Instructor.findOne({ email: email });
 
         if (oldStudent || oldInstructor) {
-            return res.status(400).json({ msg: "User already exists" });
+            return res.status(400).json({ message: "User already exists" });
         }
 
         const passwordHash = bcrypt.hashSync(password, 10);
@@ -65,14 +65,14 @@ router.post("/login", async (req, res) => {
         const { email, password } = req.body;
 
         if (email === "" || password === "") {
-            return res.status(400).json({ msg: "Please enter all fields" });
+            return res.status(400).json({ message: "Please enter all fields" });
         }
 
         const student = await Student.findOne({ email: email });
         const instructor = await Instructor.findOne({ email: email });
 
         if (!student && !instructor) {
-            return res.status(400).json({ msg: "User does not exist" });
+            return res.status(400).json({ message: "User does not exist" });
         }
 
         let user = student || instructor;
@@ -80,7 +80,7 @@ router.post("/login", async (req, res) => {
         const isMatch = bcrypt.compareSync(password, user.passwordHash);
 
         if (!isMatch) {
-            return res.status(400).json({ msg: "Wrong password" });
+            return res.status(400).json({ message: "Wrong password" });
         }
 
         const isInstructor = user instanceof Instructor;
