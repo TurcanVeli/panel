@@ -4,8 +4,9 @@
   "description": "A simple LMS built with the MERN stack.",
   "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "client": "cd client && npm run client",
+    "server": "nodemon index.js",
+    "start": "concurrently -n 'server,client' \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,6 +17,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",
+    "concurrently": "^7.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -26,6 +28,7 @@
   "devDependencies": {
     "eslint": "^8.12.0",
     "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.4.0",
     "nodemon": "^2.0.15"
   }
 }

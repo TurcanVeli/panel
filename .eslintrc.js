@@ -8,6 +8,9 @@ module.exports = {
     "parserOptions": {
         "ecmaVersion": "latest"
     },
+    "plugins": [
+        "react-hooks"
+    ],
     "rules": {
         "indent": [
             "error",
@@ -24,6 +27,8 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
     }
 };

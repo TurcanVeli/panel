@@ -13,7 +13,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "webpack serve",
+    "client": "webpack serve",
+    "server": "nodemon index.js",
+    "start": "concurrently -n 'server,client' \"npm run server\" \"npm run client\"",
     "build": "webpack build"
   },
   "eslintConfig": {
