@@ -14,11 +14,7 @@ function App() {
     }
   }, [navigate]);
 
-  return (
-    <div>
-      Redirecting...
-    </div>
-  );
+  return <div>Redirecting...</div>;
 }
 
 export default App;

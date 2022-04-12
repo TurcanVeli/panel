@@ -5,78 +5,85 @@
 }
 
 .registerPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
 
-  .authForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.authForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .authForm input {
-    display: block;
-    width: 100%;
-    padding: 8px 16px;
-    margin: 0 0 16px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 100%;
-  }
+.authForm input {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  margin: 0 0 16px 0;
+  border: 1px solid #ededed;
+  border-radius: 5px;
+  font-size: 100%;
+}
 
-  .authAlert {
-    border: 1px solid blue;
-    border-radius: 5px;
-    color: blue;
-    font-size: 100%;
-    font-weight: bold;
-    margin: 0 0 16px 0;
-    padding: 8px;
-  }
-  
-  .radioGroup {
-    margin: 0 0 16px 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .radioGroup label {
-      margin: 0 16px 0 16px;
-      font-size:  100%;
-      font-weight: bold;
-  }
+.authForm input:focus {
+  outline: 2px solid #3737f0;
+}
 
-  .registerButton {
-    background-color: blue;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    cursor: pointer;
-    width: 150px;
-    border-radius: 5px;
-    font-size: 100%;
-    font-weight: bold;
-    margin: 0 0 16px 0;
-  }
+.authAlert {
+  border: 1px solid #3737f0;
+  border-radius: 5px;
+  color: #3737f0;
+  font-size: 100%;
+  font-weight: bold;
+  margin: 0 0 16px 0;
+  padding: 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
 
-  .loginButton {
-    background-color: transparent;
-    color: blue;
-    padding: 8px 16px;
-    border: 1px solid blue;
-    cursor: pointer;
-    width: 150px;
-    border-radius: 5px;
-    font-size: 100%;
-    font-weight: bold;
-    margin: 0 0 16px 0;
-  }
+.radioGroup {
+  margin: 0 0 16px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border: 1px solid #ededed;
+  border-radius: 5px;
+}
+
+.radioGroup label {
+  margin: 0 16px 0 16px;
+  font-size: 100%;
+  font-weight: bold;
+}
+
+.registerButton {
+  background-color: #3737f0;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+  font-size: 100%;
+  font-weight: bold;
+  margin: 0 0 16px 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.loginButton {
+  background-color: transparent;
+  color: #3737f0;
+  padding: 8px 16px;
+  border: 1px solid #3737f0;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+  font-size: 100%;
+  font-weight: bold;
+  margin: 0 0 16px 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}

@@ -10,7 +10,6 @@ import Dashboard from "./pages/dashboard/Dashboard";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -18,7 +17,7 @@ ReactDOM.render(
         <Route exact path="/" element={<App />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={<Login />} />
-        <Route exact path="/dashboard" element={<Dashboard/>} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

@@ -45,10 +45,15 @@ function Register() {
     <div className={styles.registerPage}>
       <img className={styles.logo} src={logo}></img>
       <h1>Register</h1>
-      <form className={styles.authForm}s onSubmit={handleRegister} onChange={()=>{
-        setAuthMessage("");
-        setShowLoginButton(false);
-      }}>
+      <form
+        className={styles.authForm}
+        s
+        onSubmit={handleRegister}
+        onChange={() => {
+          setAuthMessage("");
+          setShowLoginButton(false);
+        }}
+      >
         <input
           id="name"
           type="text"
