@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import styles from "./Login.module.css";
 import logo from "@public/logo.svg";
 
 function Login() {
   const navigate = useNavigate();
+  const [showRegisterButton, setShowRegisterButton] = useState(false);
+  const [authMessage, setAuthMessage] = useState("");
   const [user, setUser] = useState({
     email: "",
     password: "",
     isInstructor: false,
   });
-  const [authMessage, setAuthMessage] = useState("");
 
   async function handleLogin(event) {
     event.preventDefault();
@@ -27,43 +28,59 @@ function Login() {
     if (response.status === 200) {
       navigate("/dashboard");
     }
+    if (data.message === "User does not exist") {
+      setShowRegisterButton(true);
+    }
+  }
+
+  function handleRegister(event) {
+    event.preventDefault();
+    navigate("/register");
   }
 
   return (
-    <div className="login-page">
-      <img className="logo" src={logo}></img>
+    <div className={styles.loginPage}>
+      <img className={styles.logo} src={logo}></img>
       <h1>Login</h1>
-      <form className="auth-form" onSubmit={handleLogin}>
+      <form className={styles.authForm} onSubmit={handleLogin} onChange={()=>{
+        setAuthMessage("");
+        setShowRegisterButton(false);
+      }}>
         <input
           id="email"
-          className="form-field"
           type="text"
           placeholder="Email"
           value={user.email}
-          onChange={(event) => setUser({ ...user, email: event.target.value })}
+          onChange={(event) => {
+            setUser({ ...user, email: event.target.value });
+          }}
         />
-      </form>
-      <form className="auth-form" onSubmit={handleLogin}>
         <input
           id="password"
-          className="form-field"
           type="password"
           placeholder="Password"
           value={user.password}
-          onChange={(event) =>
-            setUser({ ...user, password: event.target.value })
-          }
+          onChange={(event) => {
+            setUser({ ...user, password: event.target.value });
+          }}
         />
+        <button className={styles.loginButton} onClick={handleLogin}>
+          Login
+        </button>
       </form>
-      <button className="login-button" onClick={handleLogin}>
-        Login
-      </button>
       <div
-        className="auth-message"
-        style={{ display: authMessage === "" ? "none" : "block" }}
+        className={styles.authAlert}
+        style={{ display: authMessage ? "block" : "none" }}
       >
         {authMessage}
       </div>
+      <button
+        className={styles.registerButton}
+        onClick={handleRegister}
+        style={{ display: showRegisterButton ? "block" : "none" }}
+      >
+        Register
+      </button>
     </div>
   );
 }
