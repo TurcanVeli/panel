@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Register.module.css";
 import logo from "@public/logo.svg";
+import Cookies from "js-cookie";
 
 function Register() {
   const navigate = useNavigate();
@@ -40,6 +41,12 @@ function Register() {
     event.preventDefault();
     navigate("/login");
   }
+
+  useEffect(() => {
+    Object.keys(Cookies.get()).forEach(function (cookieName) {
+      Cookies.remove(cookieName);
+    });
+  }, []);
 
   return (
     <div className={styles.registerPage}>

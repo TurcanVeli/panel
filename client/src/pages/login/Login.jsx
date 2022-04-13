@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import logo from "@public/logo.svg";
+import Cookies from "js-cookie";
 
 function Login() {
   const navigate = useNavigate();
@@ -38,14 +39,24 @@ function Login() {
     navigate("/register");
   }
 
+  useEffect(() => {
+    Object.keys(Cookies.get()).forEach(function (cookieName) {
+      Cookies.remove(cookieName);
+    });
+  }, []);
+
   return (
     <div className={styles.loginPage}>
       <img className={styles.logo} src={logo}></img>
       <h1>Login</h1>
-      <form className={styles.authForm} onSubmit={handleLogin} onChange={()=>{
-        setAuthMessage("");
-        setShowRegisterButton(false);
-      }}>
+      <form
+        className={styles.authForm}
+        onSubmit={handleLogin}
+        onChange={() => {
+          setAuthMessage("");
+          setShowRegisterButton(false);
+        }}
+      >
         <input
           id="email"
           type="text"
