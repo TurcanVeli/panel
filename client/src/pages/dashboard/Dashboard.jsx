@@ -1,6 +1,8 @@
 import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "@components/sidebar/Sidebar";
+import styles from "./Dashboard.module.css";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -12,7 +14,10 @@ function Dashboard() {
     }
   }, [navigate]);
   return (
-    <div>
+    <div className={styles.dashboard}>
+      <div>
+        <Sidebar />
+      </div>
       <h1>Dashboard</h1>
     </div>
   );
