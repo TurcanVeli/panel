@@ -1,0 +1,29 @@
+.courseCard{
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    margin: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.courseCardLower{
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 30%;
+    width: 100%;
+    overflow: hidden;
+}
+.actions{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.actionItem{
+    height: 30px;
+    width: 30px;
+}
+.actionItem:hover{
+    cursor: pointer;
+}

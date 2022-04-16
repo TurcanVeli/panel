@@ -25,7 +25,7 @@
 
 .sidebarItem {
   width: 100%;
-  transition: all 0.2s ease-out;
+  transition: all 0.1s ease-out;
   padding: 8px;
 }
 
@@ -33,20 +33,21 @@
   background-color: #3737f0;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.2s ease-in;
+  transition: all 0.1s ease-in;
 }
 
-.sidebarItemLogout {
+.sidebarItem:last-child {
   width: 100%;
-  transition: all 0.2s ease-out;
+  transition: all 0.1s ease-out;
   padding: 8px;
+  margin-top: auto;
 }
 
-.sidebarItemLogout:hover {
+.sidebarItem:hover:last-child {
   background-color: #d60000;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.2s ease-in;
+  transition: all 0.1s ease-in;
 }
 
 .sidebarIcon {

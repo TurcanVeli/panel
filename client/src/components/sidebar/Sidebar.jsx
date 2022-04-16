@@ -16,9 +16,9 @@ function Sidebar() {
       path: "/dashboard",
     },
     {
-      name: "Courses",
-      icon: svgs.Courses,
-      path: "/courses",
+      name: "Logout",
+      icon: svgs.Logout,
+      path: "/login",
     },
   ];
   return (
@@ -36,18 +36,7 @@ function Sidebar() {
             <div className={styles.sidebarText}>{item.name}</div>
           </li>
         ))}
-        <li
-          className={styles.sidebarItemLogout}
-          key="Logout"
-          onClick={() => {
-            navigate("/login");
-          }}
-        >
-          <img src={svgs.Logout} className={styles.sidebarIcon}></img>
-          <div className={styles.sidebarText}>Logout</div>
-        </li>
       </ul>
-      
     </div>
   );
 }

@@ -1,3 +1,9 @@
-.dashboard{
-    margin-left: 75px;
+.dashboard {
+  margin-left: 100px;
+}
+
+.courseGrid {
+    display: grid;
+    grid-template-columns: 215px 215px 215px 215px 215px;
+    grid-gap: 15px;
 }

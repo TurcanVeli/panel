@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 
 function Login() {
   const navigate = useNavigate();
-  const [showRegisterButton, setShowRegisterButton] = useState(false);
   const [authMessage, setAuthMessage] = useState("");
   const [user, setUser] = useState({
     email: "",
@@ -29,9 +28,7 @@ function Login() {
     if (response.status === 200) {
       navigate("/dashboard");
     }
-    if (data.message === "User does not exist") {
-      setShowRegisterButton(true);
-    }
+    return;
   }
 
   function handleRegister(event) {
@@ -54,7 +51,6 @@ function Login() {
         onSubmit={handleLogin}
         onChange={() => {
           setAuthMessage("");
-          setShowRegisterButton(false);
         }}
       >
         <input
@@ -75,9 +71,14 @@ function Login() {
             setUser({ ...user, password: event.target.value });
           }}
         />
-        <button className={styles.loginButton} onClick={handleLogin}>
-          Login
-        </button>
+        <div>
+          <button className={styles.loginButton} onClick={handleLogin}>
+            Login
+          </button>
+          <button className={styles.registerButton} onClick={handleRegister}>
+            Register
+          </button>
+        </div>
       </form>
       <div
         className={styles.authAlert}
@@ -85,13 +86,6 @@ function Login() {
       >
         {authMessage}
       </div>
-      <button
-        className={styles.registerButton}
-        onClick={handleRegister}
-        style={{ display: showRegisterButton ? "block" : "none" }}
-      >
-        Register
-      </button>
     </div>
   );
 }
