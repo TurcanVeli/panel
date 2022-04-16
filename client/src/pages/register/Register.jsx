@@ -54,7 +54,6 @@ function Register() {
       <h1>Register</h1>
       <form
         className={styles.authForm}
-        s
         onSubmit={handleRegister}
         onChange={() => {
           setAuthMessage("");
@@ -90,8 +89,8 @@ function Register() {
               id="student"
               type="radio"
               name="userType"
+              checked={!user.isInstructor}
               onChange={() => setUser({ ...user, isInstructor: false })}
-              defaultChecked
             ></input>
             Student
           </label>
@@ -100,15 +99,24 @@ function Register() {
               id="instructor"
               type="radio"
               name="userType"
+              checked={user.isInstructor}
               onChange={() => setUser({ ...user, isInstructor: true })}
             ></input>
             Instructor
           </label>
         </div>
-
-        <button className={styles.registerButton} onClick={handleRegister}>
-          Register
-        </button>
+        <div>
+          <button className={styles.registerButton} onClick={handleRegister}>
+            Register
+          </button>
+          <button
+            className={styles.loginButton}
+            onClick={handleLogin}
+            style={{ display: showLoginButton ? "block" : "none" }}
+          >
+            Login
+          </button>
+        </div>
       </form>
       <div
         className={styles.authAlert}
@@ -116,13 +124,6 @@ function Register() {
       >
         {authMessage}
       </div>
-      <button
-        className={styles.loginButton}
-        onClick={handleLogin}
-        style={{ display: showLoginButton ? "block" : "none" }}
-      >
-        Login
-      </button>
     </div>
   );
 }
