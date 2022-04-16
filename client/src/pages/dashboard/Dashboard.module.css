@@ -1,9 +1,38 @@
-.dashboard {
-  margin-left: 100px;
+.main {
+  display: flex;
+  flex-direction: row;
 }
 
-.courseGrid {
-    display: grid;
-    grid-template-columns: 215px 215px 215px 215px 215px;
-    grid-gap: 15px;
+.coursecontainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 214px);
+  gap: 4px;
+  width: 90vw;
+}
+
+.page {
+  margin-left: 35px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.addcourse {
+  color: white;
+  background-color: lightskyblue;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: skyblue;
+  border-style: solid;
+  width: 90px;
+  height: 30px;
+}
+
+.addcourse:hover {
+  cursor: pointer;
 }

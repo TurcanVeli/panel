@@ -1,0 +1,27 @@
+.navbar {
+  display: flex;
+  list-style-type: none;
+  flex-direction: column;
+  margin-top: 0;
+  height: 97.9vh;
+  background-color: #394b58;
+  padding: 10px;
+  position: fixed;
+}
+
+.icon {
+  width: 35px;
+  height: 35px;
+  margin: 5px;
+  transition: 0.2s;
+}
+
+.icon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.navbaritem:last-child {
+  transform: rotate(180deg);
+  margin-top: auto;
+}
