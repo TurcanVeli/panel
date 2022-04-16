@@ -2,7 +2,6 @@ import { useRef, useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { useParams, useNavigate } from "react-router-dom";
 import Sidebar from "@components/sidebar/Sidebar.jsx";
-import Title from "@components/title/Title.jsx";
 import Toast from "@components/toast/Toast.jsx";
 import FileEntry from "@components/fileentry/FileEntry.jsx";
 import style from "./AddAssignment.module.css";
@@ -88,9 +87,7 @@ function AddAssignment() {
         redirect: "follow",
       });
 
-    console.log(newAssignmentRes);
-
-    if (newAssignmentRes.status !== 200) {
+    if (newAssignmentRes.status !== 201) {
       toast.current.show("Something went wrong!");
       return;
     }
@@ -102,7 +99,6 @@ function AddAssignment() {
     <div className={style.main}>
       <Sidebar />
       <div className={style.page}>
-        <Title title="Add Assignment" />
         <form onSubmit={onSubmit} className={style.assignmentform}>
           <label className={style.operationlabel + " " + style.title}>
             <p>Add a New Assignment</p>

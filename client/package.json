@@ -1,14 +1,14 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "description": "The frontend for the LMS Palette",
+  "description": "The frontend for the LMS Panel",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ahmetfaslantas/palette.git"
+    "url": ""
   },
   "author": {
-    "name": "Ahmet Faruk ASLANTAŞ",
-    "url": "https://github.com/ahmetfaslantas/"
+    "name": "Nuri CAN",
+    "url": "https://github.com/nuricann44/"
   },
   "license": "MIT",
   "private": true,

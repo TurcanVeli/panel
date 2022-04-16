@@ -55,8 +55,6 @@ function AssignmentDetails() {
       );
       let json = await result.json();
 
-      console.log(json);
-
       setAssignment(json);
     }
 

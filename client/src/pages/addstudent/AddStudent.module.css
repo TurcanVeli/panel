@@ -1,15 +1,15 @@
 .main {
   display: flex;
-  margin: 0px;
+  flex-direction: row;
+  overflow: hidden;
 }
-
 .page {
   display: flex;
   flex-direction: column;
   margin-left: 100px;
 }
 
-.noassignments {
+.studentForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,23 +18,21 @@
   width: 95vw;
 }
 
-.noassignmentslogo {
-  width: 70px;
+.studentForm input {
+  display: block;
+  width: 400px;
+  padding: 8px 16px;
+  margin: 0 0 16px 0;
+  border: 1px solid #ededed;
+  border-radius: 5px;
+  font-size: 100%;
 }
 
-.assignmentcontainer {
-  list-style: none;
+.studentForm input:focus {
+  outline: 2px solid #3737f0;
 }
 
-.controls {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.addassignment {
+.studentForm button {
   background-color: #3737f0;
   color: white;
   padding: 8px 16px;
@@ -45,9 +43,5 @@
   font-size: 100%;
   font-weight: bold;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  margin-right: 10px;
-}
-
-.addassignment:hover {
-  cursor: pointer;
+  margin: 8px;
 }

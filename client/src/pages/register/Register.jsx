@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Register.module.css";
 import logo from "@assets/logo.svg";
 import Cookies from "js-cookie";
+import Toast from "@components/toast/Toast.jsx";
 
 function Register() {
   const navigate = useNavigate();
   const [showLoginButton, setShowLoginButton] = useState(false);
-  const [authMessage, setAuthMessage] = useState("");
+  const toast = useRef();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -26,13 +27,13 @@ function Register() {
       body: JSON.stringify(user),
     });
     const data = await response.json();
-    setAuthMessage(data.message);
     console.log(data);
     if (response.status === 201) {
       navigate("/dashboard");
     }
     if (response.status === 400) {
       if (data.message === "User already exists") {
+        toast.current.show("User already exists");
         setShowLoginButton(true);
       }
     }
@@ -57,8 +58,8 @@ function Register() {
         className={styles.authForm}
         onSubmit={handleRegister}
         onChange={() => {
-          setAuthMessage("");
           setShowLoginButton(false);
+          
         }}
       >
         <input
@@ -119,12 +120,9 @@ function Register() {
           </button>
         </div>
       </form>
-      <div
-        className={styles.authAlert}
-        style={{ display: authMessage ? "block" : "none" }}
-      >
-        {authMessage}
-      </div>
+      <Toast ref={
+        toast
+      }/>
     </div>
   );
 }

@@ -1,10 +1,10 @@
 {
-  "name": "palette",
+  "name": "panel",
   "version": "1.0.0",
   "description": "A simple LMS built with the MERN stack.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ahmetfaslantas/palette.git"
+    "url": "https://github.com/nuricann44/panel.git"
   },
   "main": "src/index.js",
   "scripts": {
@@ -20,8 +20,8 @@
     "LMS"
   ],
   "author": {
-    "name": "Ahmet Faruk ASLANTAŞ",
-    "url": "https://github.com/ahmetfaslantas/"
+    "name": "Nuri Can",
+    "url": "https://github.com/nuricann44/"
   },
   "license": "MIT",
   "dependencies": {
