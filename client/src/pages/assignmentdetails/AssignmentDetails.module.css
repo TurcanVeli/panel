@@ -6,7 +6,7 @@
 .page {
   display: flex;
   flex-direction: column;
-  margin-left: 35px;
+  margin-left: 70px;
 }
 
 .page > * {
@@ -55,6 +55,11 @@
   border-color: rgb(95, 156, 194);
 }
 
+.files img {
+  height: 50px;
+  width: 50px;
+}
+
 .files:hover {
   cursor: pointer;
 }
@@ -73,13 +78,14 @@
 
 .submit {
   color: white;
-  background-color: lightskyblue;
-  border-width: 1px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
   border-radius: 5px;
-  border-color: skyblue;
-  border-style: solid;
-  width: 90px;
-  height: 30px;
+  font-size: 100%;
+  font-weight: bold;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .submit:hover {

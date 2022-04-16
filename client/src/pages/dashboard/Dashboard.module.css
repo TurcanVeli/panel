@@ -1,38 +1,40 @@
-.main {
-  display: flex;
-  flex-direction: row;
+.dashboard {
+  margin-left: 100px;
 }
 
-.coursecontainer {
+.courseGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 214px);
-  gap: 4px;
-  width: 90vw;
+  grid-template-columns: 215px 215px 215px 215px 215px;
+  grid-gap: 15px;
 }
 
-.page {
-  margin-left: 35px;
+.addCourse {
+  background-color: #3737f0;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+  font-size: 100%;
+  font-weight: bold;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  position: fixed;
+  right: 1vw;
+  top: 1vw;
+}
+
+.title {
+  font-size: xx-large;
+  font-weight: bold;
+  margin: 0;
+  display: inline-block;
 }
 
 .controls {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.addcourse {
-  color: white;
-  background-color: lightskyblue;
-  border-width: 1px;
-  border-radius: 5px;
-  border-color: skyblue;
-  border-style: solid;
-  width: 90px;
-  height: 30px;
-}
-
-.addcourse:hover {
-  cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
 }

@@ -1,45 +1,52 @@
-.coursecard {
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 8px;
-  margin: 7px;
-}
-
-.coursecardheader {
+.courseCard {
   width: 200px;
-  height: 100px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  overflow: hidden;
 }
 
-.coursename {
+.courseCardUpper {
+  height: 50%;
+}
+
+.courseCardUpper:hover {
+    cursor: pointer;
+  }
+
+.courseName {
   padding-left: 10px;
   margin-bottom: 0px;
   font-weight: bold;
 }
 
-.coursesemester {
+.courseSemester {
   margin-top: 0px;
   padding-left: 10px;
   font-size: 12px;
 }
 
-.buttoncontainer {
+.courseCardLower {
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 50%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.actions {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 8px;
 }
 
-.icon {
+.actionItem {
+  height: 20px;
   width: 20px;
-  padding-bottom: 8px;
-  padding-left: 15px;
-  padding-right: 15px;
 }
-
-.icon:hover {
+.actionItem:hover {
   cursor: pointer;
 }

@@ -1,50 +1,50 @@
 .main {
-    display: flex;
-    margin: 0px;
+  display: flex;
+  margin: 0px;
 }
 
 .page {
-    display: flex;
-    flex-direction: column;
-    margin-left: 35px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 35px;
 }
 
-.noannouncements {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    width: 95vw;
+.noAnnouncements {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 95vw;
 }
 
-.noannouncementslogo {
-    width: 70px;
-}
-
-.announcementcontainer {
-    list-style: none;
+.noAnnouncements img {
+  width: 70px;
+  height: 70px;
 }
 
 .controls {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
 }
 
-.addannouncement {
-    color: white;
-    background-color: lightskyblue;
-    border-width: 1px;
-    border-radius: 5px;
-    border-color: skyblue;
-    border-style: solid;
-    width: 130px;
-    height: 30px;
+.addAnnouncement {
+  background-color: #3737f0;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+  font-size: 100%;
+  font-weight: bold;
+  margin: 0 8px 16px 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.addannouncement:hover {
-    cursor: pointer;
+.addAnnouncement:hover {
+  cursor: pointer;
 }

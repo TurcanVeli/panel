@@ -14,17 +14,16 @@ describe("Announcements operations", () => {
         await Course.deleteMany({});
         await Instructor.deleteMany({});
 
-        await request(app).post("/api/auth/signup").send({
+        await request(app).post("/api/auth/register").send({
             email: "test",
             password: "test",
             name: "Test Instructor",
-            type: "instructor",
+            isInstructor: true,
         });
 
         const loginResponse = await request(app).post("/api/auth/login").send({
             email: "test",
             password: "test",
-            type: "instructor",
         });
 
         token = loginResponse.headers["set-cookie"];

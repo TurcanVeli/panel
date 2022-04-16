@@ -6,19 +6,22 @@ const announcementSchema = new Schema({
         type: String,
         required: true,
     },
-    content: {
+    description: {
         type: String,
-        required: true,
+        default: "",
     },
-    date: {
+    publisher: {
+        type: Schema.Types.ObjectId,
+        ref: "Instructor",
+    },
+    postDate: {
         type: Date,
         default: Date.now,
     },
-    files: [
-        {
-            type: String,
-        },
-    ],
+    files: {
+        type: Array,
+        default: [],
+    },
 });
 
 module.exports = { announcementSchema };

@@ -9,20 +9,16 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
-    passHash: {
+    passwordHash: {
         type: String,
         required: true,
-    },
-    bio: {
-        type: String,
-        required: true,
-        default: "No bio yet.",
     },
     courses: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Course",
+            default: [],
         },
     ],
 });
@@ -30,4 +26,4 @@ const userSchema = new Schema({
 const Student = mongoose.model("Student", userSchema);
 const Instructor = mongoose.model("Instructor", userSchema);
 
-module.exports = { Student, Instructor, userSchema };
+module.exports = { Instructor, Student, userSchema };

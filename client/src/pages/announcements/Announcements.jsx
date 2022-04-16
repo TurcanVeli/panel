@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import Navbar from "@components/navbar/Navbar.jsx";
+import Sidebar from "@components/sidebar/Sidebar.jsx";
 import Title from "@components/title/Title.jsx";
 import Announcement from "@components/announcement/Announcement.jsx";
 import Toast from "@components/toast/Toast.jsx";
@@ -10,7 +10,7 @@ import style from "./Announcements.module.css";
 
 function Announcements() {
   const [announcements, setAnnouncements] = useState([]);
-  const [type, setType] = useState("");
+  const [type, setType] = useState(false);
   const toast = useRef();
 
   const { courseId } = useParams();
@@ -18,10 +18,10 @@ function Announcements() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setType(Cookies.get("type"));
+    setType(Cookies.get("isInstructor") === "true");
     async function getAnnouncements() {
       let result = await fetch(
-        `${process.env.API_URL}/api/course/${courseId}/announcement`,
+        `${process.env.API_URL}/api/courses/${courseId}/announcements`,
         {
           method: "GET",
           headers: {
@@ -44,17 +44,17 @@ function Announcements() {
     getAnnouncements();
   }, []);
 
-  return ( 
+  return (
     <div className={style.main}>
-      <Navbar />
+      <Sidebar />
       <div className={style.page}>
         <div className={style.controls}>
           <Title title="Announcements" />
-          {type === "instructor" && (
+          {type && (
             <button
-              className={style.addannouncement}
+              className={style.addAnnouncement}
               onClick={() => {
-                navigate(`/course/${courseId}/announcements/new`);
+                navigate(`/courses/${courseId}/add-announcement`);
               }}
             >
               Add Announcement
@@ -62,8 +62,8 @@ function Announcements() {
           )}
         </div>
         {announcements.length === 0 ? (
-          <div className={style.noannouncements}>
-            <img src={AnnouncementLogo} alt="Announcement Logo" />
+          <div className={style.noAnnouncements}>
+            <img src={AnnouncementLogo}  alt="Announcement Logo" />
             <p>No announcements yet!</p>
           </div>
         ) : (
@@ -79,8 +79,6 @@ function Announcements() {
       </div>
       <Toast ref={toast} />
     </div>
-
-                            
   );
 }
 

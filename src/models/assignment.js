@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-
 const { submissionSchema } = require("./submission");
+const Schema = mongoose.Schema;
 
 const assignmentSchema = new Schema({
     name: {
@@ -10,21 +9,20 @@ const assignmentSchema = new Schema({
     },
     description: {
         type: String,
-        required: true,
-    },
-    maxPoints: {
-        type: Number,
-        required: true,
+        default: "",
     },
     dueDate: {
         type: Date,
         required: true,
     },
-    files: [
-        {
-            type: String,
-        },
-    ],
+    files: {
+        type: Array,
+        default: [],
+    },
+    maxPoints: {
+        type: Number,
+        default: 100,
+    },
     submissions: [
         {
             type: submissionSchema,

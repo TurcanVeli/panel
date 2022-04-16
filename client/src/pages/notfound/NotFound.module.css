@@ -8,6 +8,12 @@
   background-color: #fafafa;
 }
 
+.logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
 .return {
   text-decoration: underline;
   cursor: pointer;

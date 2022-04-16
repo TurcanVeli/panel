@@ -1,61 +1,56 @@
+import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CourseCard from "@components/coursecard/CourseCard.jsx";
-import Navbar from "@components/navbar/Navbar.jsx";
+import Sidebar from "@components/sidebar/Sidebar.jsx";
+import styles from "./Dashboard.module.css";
+import CourseCard from "@components/courseCard/CourseCard.jsx";
 import Title from "@components/title/Title.jsx";
-import Cookies from "js-cookie";
-import style from "./Dashboard.module.css";
 
 function Dashboard() {
+  const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
-  const [type, setType] = useState("");
-  let navigate = useNavigate();
-
+  const [type, setType] = useState(false);
+  async function getCourses() {
+    const response = await fetch("http://localhost:5000/api/courses", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const data = await response.json();
+    setCourses(data.courses);
+  }
   useEffect(() => {
-    if (!Cookies.get("token") || !Cookies.get("type")) {
+    if (!Cookies.get("token") || !Cookies.get("isInstructor")) {
       navigate("/login");
     }
-
-    async function getCourses() {
-      let result = await fetch(`${process.env.API_URL}/api/course`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        redirect: "follow",
-      });
-
-      let json = await result.json();
-
-      setCourses(json);
-    }
     getCourses();
-    setType(Cookies.get("type"));
+    setType(Cookies.get("isInstructor") === "true");
   }, [navigate]);
-
   return (
-    <div className={style.main}>
-      <Navbar />
-      <div className={style.page}>
-        <div className={style.controls}>
-          <Title title="Dashboard" />
-          {type === "instructor" && (
-            <button
-              className={style.addcourse}
-              onClick={() => {
-                navigate("/newcourse");
-              }}
-            >
-              Add Course
-            </button>
-          )}
-        </div>
-        <ul className={style.coursecontainer}>
-          {courses.map((course) => (
-            <CourseCard course={course} key={course._id} />
-          ))}
-        </ul>
+    <div className={styles.dashboard}>
+      <div>
+        <Sidebar />
+      </div>
+
+      <div className={styles.controls}>
+        <Title title="Dashboard" />
+        {type === true && (
+          <button
+            className={styles.addCourse}
+            onClick={() => {
+              navigate("/add-course");
+            }}
+          >
+            Add Course
+          </button>
+        )}
+      </div>
+      <div className={styles.courseGrid}>
+        {courses.map((course, index) => (
+          <CourseCard course={course} key={index} />
+        ))}
       </div>
     </div>
   );

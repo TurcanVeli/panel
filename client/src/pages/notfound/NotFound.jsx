@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import style from "./NotFound.module.css";
-import Palette from "@assets/palette.svg";
+import Panel from "@assets/logo.svg";
 
 function NotFound() {
   const navigate = useNavigate();
 
   return (
     <div className={style.notfound}>
-      <img className={style.palette} src={Palette} alt="Palette" />
+      <img className={style.logo} src={Panel} alt="Panel" />
       <h1>404</h1>
       <h2>Page not found</h2>
       <h3>The page you are looking for does not exist.</h3>

@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import Title from "@components/title/Title.jsx";
-import Navbar from "@components/navbar/Navbar.jsx";
+import Sidebar from "@components/sidebar/Sidebar.jsx";
 import Toast from "@components/toast/Toast.jsx";
 import style from "./AddCourse.module.css";
 
@@ -20,7 +19,7 @@ function AddCourse() {
       return;
     }
 
-    await fetch(`${process.env.API_URL}/api/course/newcourse`, {
+    await fetch(`${process.env.API_URL}/api/courses/create-course`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,9 +37,8 @@ function AddCourse() {
 
   return (
     <div className={style.main}>
-      <Navbar />
+      <Sidebar/>
       <div className={style.page}>
-        <Title title="Add Course" />
         <form onSubmit={onSubmit} className={style.courseform}>
           <label className={style.operationlabel + " " + style.title}>
             <p>Add a New Course</p>

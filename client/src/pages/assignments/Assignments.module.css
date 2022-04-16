@@ -35,14 +35,16 @@
 }
 
 .addassignment {
+  background-color: #3737f0;
   color: white;
-  background-color: lightskyblue;
-  border-width: 1px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
   border-radius: 5px;
-  border-color: skyblue;
-  border-style: solid;
-  width: 130px;
-  height: 30px;
+  font-size: 100%;
+  font-weight: bold;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .addassignment:hover {

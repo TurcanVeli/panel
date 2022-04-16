@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Navbar from "@components/navbar/Navbar.jsx";
+import Sidebar from "@components/sidebar/Sidebar.jsx";
 import Title from "@components/title/Title.jsx";
 import Assignment from "@components/assignment/Assignment.jsx";
 import AssignmentLogo from "@assets/assignment.svg";
@@ -15,46 +15,46 @@ function Assignments() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function getCourse() {
-      let result = await fetch(
-        `${process.env.API_URL}/api/course/${courseId}/assignment`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          redirect: "follow",
-        }
-      );
-      let json = await result.json();
+  async function getCourse() {
+    let result = await fetch(
+      `${process.env.API_URL}/api/courses/${courseId}/assignments`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        redirect: "follow",
+      }
+    );
+    let json = await result.json();
 
-      setAssignments(json);
-    }
+    setAssignments(json);
+  }
 
+  useEffect( () => {
     getCourse();
-    setType(Cookies.get("type"));
+    setType(Cookies.get("isInstructor") === "true");
   }, []);
 
   return (
     <div className={style.main}>
-      <Navbar />
+      <Sidebar />
       <div className={style.page}>
         <div className={style.controls}>
           <Title title="Assignments" />
-          {type === "instructor" && (
+          {type && (
             <button
               className={style.addassignment}
               onClick={() => {
-                navigate(`/course/${courseId}/assignments/new`);
+                navigate(`/courses/${courseId}/add-assignment`);
               }}
             >
               Add Assignment
             </button>
           )}
         </div>
-          
+
         {assignments.length === 0 ? (
           <div className={style.noassignments}>
             <img

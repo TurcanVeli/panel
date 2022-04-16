@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
-import Navbar from "@components/navbar/Navbar.jsx";
+import Sidebar from "@components/sidebar/Sidebar.jsx";
 import FileEntry from "@components/fileentry/FileEntry.jsx";
 import Title from "@components/title/Title.jsx";
 import Toast from "@components/toast/Toast.jsx";
@@ -43,7 +43,7 @@ function AssignmentDetails() {
   useEffect(() => {
     async function getAssignment() {
       let result = await fetch(
-        `${process.env.API_URL}/api/course/${courseId}/assignment/${assignmentId}/`,
+        `${process.env.API_URL}/api/courses/${courseId}/assignment/${assignmentId}/`,
         {
           method: "GET",
           headers: {
@@ -84,7 +84,7 @@ function AssignmentDetails() {
     const uploadJson = await uploadRes.json();
 
     const submitRes = await fetch(
-      `${process.env.API_URL}/api/course/${courseId}/assignment/${assignmentId}/submit`,
+      `${process.env.API_URL}/api/courses/${courseId}/assignments/${assignmentId}/submit`,
       {
         method: "POST",
         headers: {
@@ -108,7 +108,7 @@ function AssignmentDetails() {
 
   return (
     <div className={style.main}>
-      <Navbar />
+      <Sidebar />
       <div className={style.page}>
         <Title title="Submission" />
         <div className={style.assignment}>
@@ -120,7 +120,7 @@ function AssignmentDetails() {
             <button
               style={
                 submissionFiles.length > 0
-                  ? { backgroundColor: "#5f9cc2" }
+                  ? { backgroundColor: "#3737f0" }
                   : { backgroundColor: "lightgrey" }
               }
               className={style.submit}

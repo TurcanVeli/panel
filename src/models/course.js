@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
-const { assignmentSchema } = require("./assignment");
+const { assignmentSchema } = require("../models/assignment");
 const { announcementSchema } = require("./announcement");
 
 const courseSchema = new Schema({
@@ -11,20 +10,16 @@ const courseSchema = new Schema({
     },
     description: {
         type: String,
-        required: true,
+        default: "",
     },
     creationDate: {
         type: Date,
         default: Date.now,
     },
-    assignments: [
+    instructors: [
         {
-            type: assignmentSchema,
-        },
-    ],
-    announcements: [
-        {
-            type: announcementSchema,
+            type: Schema.Types.ObjectId,
+            ref: "Instructor",
         },
     ],
     students: [
@@ -33,12 +28,22 @@ const courseSchema = new Schema({
             ref: "Student",
         },
     ],
-    instructors: [
+    assignments: [
         {
-            type: Schema.Types.ObjectId,
-            ref: "Instructor",
+            type: assignmentSchema,
+            default: [],
         },
     ],
+    announcements: [
+        {
+            type: announcementSchema,
+            default: [],
+        },
+    ],
+    files: {
+        type: Array,
+        default: [],
+    },
 });
 
 const Course = mongoose.model("Course", courseSchema);

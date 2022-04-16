@@ -13,7 +13,7 @@ function Assignment(props) {
     <li
       className={style.assignmententry}
       onClick={() => {
-        navigate(`/course/${course}/assignment/${assignment._id}`);
+        navigate(`/courses/${course}/assignment/${assignment._id}`);
       }}
     >
       <div className={style.assignmentcontainer}>

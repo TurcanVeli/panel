@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
-import style from "./CourseCard.module.css";
-import AnnouncementLogo from "@assets/announcement.svg";
-import AssignmentLogo from "@assets/assignment.svg";
-import FileLogo from "@assets/file.svg";
+import styles from "./CourseCard.module.css";
+import * as svgs from "@assets";
 import { useNavigate } from "react-router-dom";
 
 function CourseCard(props) {
@@ -36,37 +34,45 @@ function CourseCard(props) {
   };
 
   return (
-    <li className={style.coursecard}>
-      <div className={style.coursecardheader} style={cardColorStyle}></div>
-      <p className={style.coursename}>{props.course.name}</p>
-      <p className={style.coursesemester}>{getSemester()}</p>
-      <div className={style.buttoncontainer}>
-        <img
-          src={AnnouncementLogo}
-          className={style.icon}
-          alt="Announcements"
-          onClick={() => {
-            navigate(`/course/${props.course._id}/announcements`);
-          }}
-        />
-        <img
-          src={AssignmentLogo}
-          className={style.icon}
-          alt="Assignments"
-          onClick={() => {
-            navigate(`/course/${props.course._id}/assignments`);
-          }}
-        />
-        <img
-          src={FileLogo}
-          className={style.icon}
-          alt="Files"
-          onClick={() => {
-            navigate(`/course/${props.course._id}/files`);
-          }}
-        />
+    <div className={styles.courseCard}>
+      <div
+        className={styles.courseCardUpper}
+        style={cardColorStyle}
+        onClick={() => {
+          navigate(`/courses/${props.course._id}`);
+        }}
+      ></div>
+      <div className={styles.courseCardLower}>
+        <div className={styles.courseName}>{props.course.name}</div>
+        <div className={styles.courseSemester}>{getSemester()}</div>
+        <div className={styles.actions}>
+          <div
+            className={styles.actionItem}
+            onClick={() => {
+              navigate(`/courses/${props.course._id}/announcements`);
+            }}
+          >
+            <img src={svgs.Announcement}></img>
+          </div>
+          <div
+            className={styles.actionItem}
+            onClick={() => {
+              navigate(`/courses/${props.course._id}/assignments`);
+            }}
+          >
+            <img src={svgs.Assignment}></img>
+          </div>
+          <div
+            className={styles.actionItem}
+            onClick={() => {
+              navigate("/files");
+            }}
+          >
+            <img src={svgs.Files}></img>
+          </div>
+        </div>
       </div>
-    </li>
+    </div>
   );
 }
 

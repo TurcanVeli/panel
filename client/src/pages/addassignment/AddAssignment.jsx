@@ -1,7 +1,7 @@
 import { useRef, useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { useParams, useNavigate } from "react-router-dom";
-import Navbar from "@components/navbar/Navbar.jsx";
+import Sidebar from "@components/sidebar/Sidebar.jsx";
 import Title from "@components/title/Title.jsx";
 import Toast from "@components/toast/Toast.jsx";
 import FileEntry from "@components/fileentry/FileEntry.jsx";
@@ -71,7 +71,7 @@ function AddAssignment() {
     const uploadJson = await uploadRes.json();
 
     const newAssignmentRes = await fetch(
-      `${process.env.API_URL}/api/course/${courseId}/assignment`,
+      `${process.env.API_URL}/api/courses/${courseId}/add-assignment`,
       {
         method: "POST",
         headers: {
@@ -88,17 +88,19 @@ function AddAssignment() {
         redirect: "follow",
       });
 
+    console.log(newAssignmentRes);
+
     if (newAssignmentRes.status !== 200) {
       toast.current.show("Something went wrong!");
       return;
     }
 
-    navigate(`/course/${courseId}/assignments`);
+    navigate(`/courses/${courseId}/assignments`);
   };
 
   return ( 
     <div className={style.main}>
-      <Navbar />
+      <Sidebar />
       <div className={style.page}>
         <Title title="Add Assignment" />
         <form onSubmit={onSubmit} className={style.assignmentform}>
