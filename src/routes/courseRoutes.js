@@ -56,16 +56,16 @@ router.delete(
 );
 
 router.post(
-    "/:courseId/add-student/:studentId",
+    "/:courseId/add-student/:studentMail",
     [authenticateToken, verifyCourseExists, verifyInstructor],
     async (req, res) => {
         const course = res.locals.course;
         const courseId = course._id;
-        const student = await Student.findById(req.params.studentId);
-        const studentId = student._id;
+        const student = await Student.findOne({ email: req.params.studentMail });
         if (!student) {
             return res.status(404).json({ message: "Student not found" });
         }
+        const studentId = student._id;
         course.students.push(studentId);
         student.courses.push(courseId);
         await course.save();

@@ -4,6 +4,7 @@ const verifyCourseExists = require("../middleware/verifyCourseExists");
 const verifyInstructor = require("../middleware/verifyInstructor");
 const verifyAssignmentExists = require("../middleware/verifyAssignmentExists");
 const { Course } = require("../models/course");
+const fs = require("fs");
 
 router.post(
     "/:courseId/add-assignment",
@@ -11,7 +12,7 @@ router.post(
     async (req, res) => {
         const courseId = req.params.courseId;
 
-        const { name, description, dueDate } = req.body;
+        const { name, description, dueDate, maxPoints } = req.body;
 
         const course = await Course.findById(courseId);
         if (!course) {
@@ -23,6 +24,7 @@ router.post(
             description,
             courseId: courseId,
             dueDate: dueDate,
+            maxPoints: maxPoints,
         });
         await course.save();
         res.status(201).json({ message: "Assignment created successfully" });
@@ -71,6 +73,44 @@ router.delete(
         course.assignments.pull(assignment);
         await course.save();
         res.status(200).json({ message: "Assignment deleted successfully" });
+    }
+);
+
+router.post(
+    "/:courseId/assignments/:assignmentId/submit",
+    [authenticateToken, verifyCourseExists, verifyAssignmentExists],
+    async (req, res) => {
+
+        const { files } = req.body;
+
+        if (!files) {
+            return res.status(400).send({ error: "No files provided" });
+        }
+
+        files.forEach((file) => {
+            if (
+                !fs.existsSync(
+                    `${process.env.UPLOAD_ROOT}/uploads/students/` +
+            `${res.locals.userId}/${file}`
+                )
+            ) {
+                return res.status(400).send({ error: "File not found" });
+            }
+        });
+
+        let course = res.locals.course;
+        let assignment = course.assignments.find(
+            (assignment) => assignment._id.toString() === req.params.assignmentId
+        );
+
+        assignment.submissions.push({
+            studentId: res.locals.userId,
+            files: files,
+        });
+
+        await course.save();
+
+        res.status(200).send({ message: "Assignment submitted" });
     }
 );
 

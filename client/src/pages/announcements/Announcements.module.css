@@ -1,0 +1,52 @@
+.main {
+  display: flex;
+  margin: 0px;
+  overflow: hidden;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+}
+
+.noAnnouncements {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 95vw;
+}
+
+.noAnnouncements img {
+  width: 70px;
+  height: 70px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.addAnnouncement {
+  background-color: #3737f0;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+  font-size: 100%;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: 40px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.addAnnouncement:hover {
+  cursor: pointer;
+}

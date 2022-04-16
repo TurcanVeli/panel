@@ -6,6 +6,7 @@ const userRouter = require("./routes/userRoutes");
 const courseRouter = require("./routes/courseRoutes");
 const assignmentRouter = require("./routes/assignmentRoutes");
 const announcementRouter = require("./routes/announcementRoutes");
+const filesRoutes = require("./routes/fileRoutes");
 const cookieParser = require("cookie-parser");
 
 const app = express();
@@ -22,10 +23,11 @@ app.use("/api/auth", userRouter);
 app.use("/api/courses", courseRouter);
 app.use("/api/courses", assignmentRouter);
 app.use("/api/courses", announcementRouter);
+app.use("/api/files", filesRoutes);
 
 console.log("Connecting to database...");
 mongoose
-    .connect(process.env.MONGODB_URI)
+    .connect(process.env.DB)
     .then(() => {
         console.log("Connected to database");
     })

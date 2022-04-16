@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
-import logo from "@public/logo.svg";
+import logo from "@assets/logo.svg";
 import Cookies from "js-cookie";
+import Toast from "@components/toast/Toast.jsx";
 
 function Login() {
   const navigate = useNavigate();
-  const [authMessage, setAuthMessage] = useState("");
   const [user, setUser] = useState({
     email: "",
     password: "",
     isInstructor: false,
   });
+  const toast = useRef();
 
   async function handleLogin(event) {
     event.preventDefault();
@@ -24,10 +25,10 @@ function Login() {
       body: JSON.stringify(user),
     });
     const data = await response.json();
-    setAuthMessage(data.message);
     if (response.status === 200) {
       navigate("/dashboard");
     }
+    toast.current.show(data.message);
     return;
   }
 
@@ -49,9 +50,6 @@ function Login() {
       <form
         className={styles.authForm}
         onSubmit={handleLogin}
-        onChange={() => {
-          setAuthMessage("");
-        }}
       >
         <input
           id="email"
@@ -80,12 +78,7 @@ function Login() {
           </button>
         </div>
       </form>
-      <div
-        className={styles.authAlert}
-        style={{ display: authMessage ? "block" : "none" }}
-      >
-        {authMessage}
-      </div>
+      <Toast ref={toast} />
     </div>
   );
 }

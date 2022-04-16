@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { submissionSchema } = require("./submission");
 const Schema = mongoose.Schema;
 
 const assignmentSchema = new Schema({
@@ -18,6 +19,15 @@ const assignmentSchema = new Schema({
         type: Array,
         default: [],
     },
+    maxPoints: {
+        type: Number,
+        default: 100,
+    },
+    submissions: [
+        {
+            type: submissionSchema,
+        },
+    ],
 });
 
 module.exports = { assignmentSchema };
