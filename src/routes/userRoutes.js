@@ -10,9 +10,9 @@ router.post("/register", async (req, res) => {
 
         if (
             name === "" ||
-            email === "" ||
-            password === "" ||
-            typeof isInstructor === "undefined"
+      email === "" ||
+      password === "" ||
+      typeof isInstructor === "undefined"
         ) {
             return res.status(400).json({ message: "Please enter all fields" });
         }
@@ -54,6 +54,7 @@ router.post("/register", async (req, res) => {
         res
             .status(201)
             .cookie("token", token)
+            .cookie("isInstructor", isInstructor)
             .json({ message: "User created successfully" });
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -96,6 +97,7 @@ router.post("/login", async (req, res) => {
         res
             .status(200)
             .cookie("token", token)
+            .cookie("isInstructor", isInstructor)
             .json({ message: "User logged in successfully" });
     } catch (err) {
         res.status(500).json({ error: err.message });

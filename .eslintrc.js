@@ -2,15 +2,13 @@ module.exports = {
     "env": {
         "commonjs": true,
         "es2021": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": "latest"
     },
-    "plugins": [
-        "react-hooks"
-    ],
     "rules": {
         "indent": [
             "error",
@@ -28,7 +26,12 @@ module.exports = {
             "error",
             "always"
         ],
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
+        "max-len": [
+            "error",
+            {
+                "code": 85
+            }
+        ],
+        "no-console": "error"
     }
 };

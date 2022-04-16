@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Register.module.css";
-import logo from "@public/logo.svg";
+import logo from "@assets/logo.svg";
 import Cookies from "js-cookie";
 
 function Register() {
@@ -27,6 +27,7 @@ function Register() {
     });
     const data = await response.json();
     setAuthMessage(data.message);
+    console.log(data);
     if (response.status === 201) {
       navigate("/dashboard");
     }

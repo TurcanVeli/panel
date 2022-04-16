@@ -12,6 +12,10 @@ const courseSchema = new Schema({
         type: String,
         default: "",
     },
+    creationDate: {
+        type: Date,
+        default: Date.now,
+    },
     instructors: [
         {
             type: Schema.Types.ObjectId,
