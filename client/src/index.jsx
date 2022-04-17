@@ -15,6 +15,7 @@ import AddCourse from "@pages/addcourse/AddCourse.jsx";
 import AddAssignment from "@pages/addassignment/AddAssignment.jsx";
 import CoursePage from "@pages/coursepage/CoursePage.jsx";
 import AddStudent from "@pages/addstudent/AddStudent.jsx";
+import AddAnnouncement from "@pages/addannouncement/AddAnnouncement.jsx";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -31,6 +32,7 @@ ReactDOM.render(
         <Route path="/courses/:courseId/add-assignment" element={<AddAssignment />} />
         <Route path="/courses/:courseId" element={<CoursePage />} />
         <Route path="/courses/:courseId/add-student/" element={<AddStudent />} />
+        <Route path="/courses/:courseId/add-announcement/" element={<AddAnnouncement />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
