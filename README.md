@@ -42,28 +42,21 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-#### •	This application has two different user types such as instructor and students. 
-#### •	When logged into Panel the user can see the dashboard screen. 
-#### •	Users can see lessons that are registered before.
-#### •	An instructor can add new lessons. 
-#### •	The instructor can invite the students to lessons
-#### •	Each lesson has announcements, grades, lesson files, assignments, and discussions part. 
-#### •	An instructor can add a new announcement and assignments to the lesson. 
-#### •	The instructor can choose the uploading file types and the due dates for the assignments. 
-#### •	The instructor can grade the student's assignments. 
-#### •	Both instructor and student can creat
-#### •	And students and instructors can add comments for announcements and discussions. 
-Use the `README.md` to get started.
-
-
-
+<ul>
+    <li> This application has two different user types such as instructor and students.  </li>
+    <li> When logged into Panel the user can see the dashboard screen. </li>
+    <li> Users can see lessons that are registered before. </li>
+    <li> An instructor can add new lessons. </li>
+    <li> The instructor can invite the students to lessons. </li>
+    <li> Each lesson has announcements, grades, lesson files, assignments, and discussions part. </li>
+    <li> An instructor can add a new announcement and assignments to the lesson. </li>
+    <li> The instructor can choose the uploading file types and the due dates for the assignments. </li>
+    <li> The instructor can grade the student's assignments. </li>
+    <li> Both instructor and student can creat. </li>
+    <li> And students and instructors can add comments for announcements and discussions. </li>
+</ul>
 
 ### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-
 
 * [MongoDB](https://www.mongodb.com/) is used Cross-platform Document-Oriented Database while developing the application
 
@@ -73,15 +66,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [Node.js](https://nodejs.org/en/) is used to run the front end on the server developing the application
 
 
-
-
-
-
-
-
 ### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Clone the repo
    ```sh
@@ -96,26 +81,10 @@ _Below is an example of how you can instruct your audience on installing and set
    npm run start
    ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-
 
 
 <!-- CONTACT -->
@@ -123,8 +92,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 Project Link: [https://github.com/nuricann44/panel](https://github.com/nuricann44/panel)
-
-
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
