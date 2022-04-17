@@ -13,7 +13,7 @@ function Announcement(props) {
     <li
       className={style.announcemententry}
       onClick={() => {
-        navigate(`/course/${course}/announcement/${announcement._id}`);
+        navigate(`/courses/${course}/announcements/${announcement._id}`);
       }}
     >
       <div className={style.announcementcontainer}>
@@ -26,7 +26,7 @@ function Announcement(props) {
           <p className={style.title}>{announcement.title}</p>
           <p className={style.content}>{announcement.content}</p>
           <p className={style.date}>
-            {new Date(announcement.date).toLocaleDateString(
+            {new Date(announcement.postDate).toLocaleDateString(
               "en-US",
               {
                 weekday: "long",
@@ -47,10 +47,10 @@ function Announcement(props) {
 Announcement.propTypes = {
   announcement: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
     _id: PropTypes.string.isRequired,
     publisher: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    postDate: PropTypes.string.isRequired,
     files: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };

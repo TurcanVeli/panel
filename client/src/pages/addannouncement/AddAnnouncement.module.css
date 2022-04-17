@@ -1,0 +1,55 @@
+.main {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .page {
+    margin-left: 35px;
+    width: 90vw;
+  }
+  
+  .announcementForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .textbox {
+    display: block;
+    width: 400px;
+    padding: 8px 16px;
+    margin: 0 0 16px 0;
+    border: 1px solid #ededed;
+    border-radius: 5px;
+    font-size: 100%;
+  }
+  
+  .textbox:focus {
+    outline: 2px solid #3737f0;
+  }
+  
+  .title {
+    margin: 5px;
+    font-size: xx-large;
+    font-weight: bold;
+  }
+  
+  .submit {
+    background-color: #3737f0;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    border-radius: 5px;
+    font-size: 100%;
+    font-weight: bold;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin: 8px;
+  }
+  
+  .submit:hover {
+    cursor: pointer;
+  }
+  
