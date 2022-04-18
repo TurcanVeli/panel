@@ -1,0 +1,55 @@
+.main {
+  display: flex;
+  margin: 0px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+}
+
+.noassignments {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 95vw;
+}
+
+.noassignmentslogo {
+  width: 70px;
+}
+
+.assignmentcontainer {
+  list-style: none;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.addassignment {
+  background-color: #3737f0;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+  font-size: 100%;
+  font-weight: bold;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  position: fixed;
+  right: 1vw;
+  top: 1vw;
+}
+
+.addassignment:hover {
+  cursor: pointer;
+}

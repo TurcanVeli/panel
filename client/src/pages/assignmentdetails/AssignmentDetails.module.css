@@ -1,0 +1,93 @@
+.main {
+  display: flex;
+  margin: 0px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  margin-left: 70px;
+}
+
+.page > * {
+  margin-left: 35px;
+}
+
+.assignment {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+
+.assignmentheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5em;
+  flex: auto;
+}
+
+.maxpoints {
+  font-size: 1.5em;
+  flex: 0.5;
+}
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0.5;
+}
+
+.files {
+  width: 500px;
+  height: 250px;
+  border: 1px;
+  border-style: dashed;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: rgb(95, 156, 194);
+}
+
+.files img {
+  height: 50px;
+  width: 50px;
+}
+
+.files:hover {
+  cursor: pointer;
+}
+
+.filelist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-color: rgb(95, 156, 194);
+  width: 475px;
+  height: fit-content;
+  border-radius: 8px;
+}
+
+.submit {
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+  font-size: 100%;
+  font-weight: bold;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.submit:hover {
+  cursor: pointer;
+}

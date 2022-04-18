@@ -1,23 +1,23 @@
-import logo from "../public/logo512.png";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+
 import "./App.css";
+import { useEffect } from "react";
 
 function App() {
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (!Cookies.get("token")) {
+      navigate("/login");
+    } else {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Redirecting...</p>
     </div>
   );
 }

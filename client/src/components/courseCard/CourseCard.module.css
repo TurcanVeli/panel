@@ -1,0 +1,52 @@
+.courseCard {
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  overflow: hidden;
+}
+
+.courseCardUpper {
+  height: 50%;
+}
+
+.courseCardUpper:hover {
+    cursor: pointer;
+  }
+
+.courseName {
+  padding-left: 10px;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+
+.courseSemester {
+  margin-top: 0px;
+  padding-left: 10px;
+  font-size: 12px;
+}
+
+.courseCardLower {
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 50%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 8px;
+}
+
+.actionItem {
+  height: 20px;
+  width: 20px;
+}
+.actionItem:hover {
+  cursor: pointer;
+}
