@@ -1,0 +1,16 @@
+.main {
+    display: flex;
+    margin: 0px;
+  }
+  
+  .page {
+    display: flex;
+    flex-direction: column;
+    margin-left: 70px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 35px;
+  }
