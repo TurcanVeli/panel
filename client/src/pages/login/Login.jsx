@@ -46,7 +46,7 @@ function Login() {
   return (
     <div className={styles.loginPage}>
       <img className={styles.logo} src={logo}></img>
-      <h1>Login</h1>
+      <h1 style={{"margin": "8px"}}>Login</h1>
       <form
         className={styles.authForm}
         onSubmit={handleLogin}
