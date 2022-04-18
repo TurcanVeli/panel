@@ -45,7 +45,9 @@
   font-size: 100%;
   font-weight: bold;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  margin-right: 10px;
+  position: fixed;
+  right: 1vw;
+  top: 1vw;
 }
 
 .addassignment:hover {

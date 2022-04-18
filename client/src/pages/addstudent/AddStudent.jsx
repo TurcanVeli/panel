@@ -2,7 +2,7 @@ import styles from "./AddStudent.module.css";
 import Title from "@components/title/Title.jsx";
 import Toast from "@components/toast/Toast.jsx";
 import { useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import Sidebar from "@components/sidebar/Sidebar.jsx";
 
 function AddStudent() {
@@ -11,9 +11,9 @@ function AddStudent() {
   });
   const toast = useRef();
   const courseId = useParams().courseId;
-  const navigate = useNavigate();
 
-  async function addStudent() {
+  async function addStudent(e) {
+    e.preventDefault();
     const res = await fetch(
       `${process.env.API_URL}/api/courses/${courseId}/add-student/${student.email}`,
       {
@@ -27,12 +27,10 @@ function AddStudent() {
       }
     );
     if (res.status !== 200) {
-      console.log(res);
-      toast.current.show("Something went wrong!");
+      toast.current.show("The student was not found");
       return;
     }
     toast.current.show("Student added!");
-    navigate(`/courses/${courseId}`);
   }
 
   return (
