@@ -25,11 +25,11 @@ function Login() {
       body: JSON.stringify(user),
     });
     const data = await response.json();
-    if (response.status === 200) {
-      navigate("/dashboard");
+    if (response.status !== 200) {
+      toast.current.show(data.message);
+      return;
     }
-    toast.current.show(data.message);
-    return;
+    navigate("/dashboard");
   }
 
   function handleRegister(event) {

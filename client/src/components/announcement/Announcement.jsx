@@ -24,7 +24,7 @@ function Announcement(props) {
         />
         <div className={style.announcementdetails}>
           <p className={style.title}>{announcement.title}</p>
-          <p className={style.content}>{announcement.content}</p>
+          <p className={style.content}>{announcement.description}</p>
           <p className={style.date}>
             {new Date(announcement.postDate).toLocaleDateString(
               "en-US",
