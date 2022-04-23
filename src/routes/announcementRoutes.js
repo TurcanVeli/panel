@@ -3,6 +3,7 @@ const authenticateToken = require("../middleware/authenticateToken");
 const verifyCourseExists = require("../middleware/verifyCourseExists");
 const verifyInstructor = require("../middleware/verifyInstructor");
 const verifyAnnouncementExists = require("../middleware/verifyAnnouncementExists");
+const { Instructor } = require("../models/user");
 
 router.post(
     "/:courseId/add-announcement",
@@ -36,8 +37,9 @@ router.get(
     "/:courseId/announcements/:announcementId",
     [authenticateToken, verifyCourseExists, verifyAnnouncementExists],
     async (req, res) => {
-        const announcement = res.locals.announcement;
-
+        let announcement = res.locals.announcement;
+        const publisher = await Instructor.findById(announcement.publisher);
+        announcement = { ...announcement._doc, publisher: publisher.name };
         res.send(announcement);
     }
 );
