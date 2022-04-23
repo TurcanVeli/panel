@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "@components/sidebar/Sidebar.jsx";
 import Toast from "@components/toast/Toast.jsx";
 import style from "./AddAnnouncement.module.css";
-import Cookies from "js-cookie";
 
 function AddAnnouncement() {
   const announcementTitle = useRef();
@@ -52,9 +51,11 @@ function AddAnnouncement() {
             placeholder="Announcement Title"
             ref={announcementTitle}
           />
-          <input
+          <textarea
             className={style.textbox}
-            type="text"
+            maxLength="1000"
+            cols="30"
+            rows="10"
             placeholder="Annuoncement Description"
             ref={announcementDescription}
           />

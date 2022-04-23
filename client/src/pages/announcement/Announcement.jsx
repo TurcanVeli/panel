@@ -1,5 +1,5 @@
 import styles from "./Announcement.module.css";
-import Title from "@components/title/Title.jsx";
+import AnnouncementLogo from "@assets/announcement.svg";
 import Sidebar from "@components/sidebar/Sidebar.jsx";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -10,6 +10,7 @@ function Announcement() {
     description: "",
     files: [],
     date: "",
+    publisher: "",
   });
   const announcementId = useParams().announcementId;
   const courseId = useParams().courseId;
@@ -28,15 +29,19 @@ function Announcement() {
     let json = await result.json();
 
     setAnnouncement(json);
-  });
+  }, []);
 
   return (
     <div>
       <Sidebar />
       <div className={styles.page}>
-        <Title title={announcement.title}></Title>
-        <div className={styles.content}>
-          <p>{announcement.description}</p>
+        <div className={styles.card}>
+          <h2>
+            {" "}
+            <img src={AnnouncementLogo}></img> {announcement.title}
+          </h2>
+          <h3>{announcement.publisher} </h3>
+          <div className={styles.content}>{announcement.description}</div>
         </div>
       </div>
     </div>

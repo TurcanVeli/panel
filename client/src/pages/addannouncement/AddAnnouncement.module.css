@@ -23,6 +23,7 @@
     border: 1px solid #ededed;
     border-radius: 5px;
     font-size: 100%;
+    resize: none;
   }
   
   .textbox:focus {
