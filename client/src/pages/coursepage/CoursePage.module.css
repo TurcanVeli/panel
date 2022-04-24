@@ -8,22 +8,6 @@
   flex-direction: column;
 }
 
-.addStudent {
-  background-color: #3737f0;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  cursor: pointer;
-  width: 150px;
-  border-radius: 5px;
-  font-size: 100%;
-  font-weight: bold;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  position: fixed;
-  right: 1vw;
-  top: 1vw;
-}
-
 .controls {
   display: flex;
   flex-direction: row;
