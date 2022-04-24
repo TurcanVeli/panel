@@ -6,6 +6,7 @@ import Assignment from "@components/assignment/Assignment.jsx";
 import AssignmentLogo from "@assets/assignment.svg";
 import style from "./Assignments.module.css";
 import Cookies from "js-cookie";
+import CourseNavbar from "@components/courseNavbar/CourseNavbar.jsx";
 
 function Assignments() {
   const [assignments, setAssignments] = useState([]);
@@ -32,7 +33,7 @@ function Assignments() {
     setAssignments(json);
   }
 
-  useEffect( () => {
+  useEffect(() => {
     getCourse();
     setType(Cookies.get("isInstructor") === "true");
   }, []);
@@ -40,6 +41,7 @@ function Assignments() {
   return (
     <div className={style.main}>
       <Sidebar />
+      <CourseNavbar />
       <div className={style.page}>
         <div className={style.controls}>
           <Title title="Assignments" />
@@ -54,23 +56,24 @@ function Assignments() {
             </button>
           )}
         </div>
-
-        {assignments.length === 0 ? (
-          <div className={style.noassignments}>
-            <img
-              className={style.noassignmentslogo}
-              src={AssignmentLogo}
-              alt="No Assignments"
-            />
-            <p>No assignments yet!</p>
-          </div>
-        ) : (
-          <ul className={style.assignmentcontainer}>
-            {assignments.map((assignment) => (
-              <Assignment assignment={assignment} key={assignment._id} />
-            ))}
-          </ul>
-        )}
+        <div className={style.assignments}>
+          {assignments.length === 0 ? (
+            <div className={style.noassignments}>
+              <img
+                className={style.noassignmentslogo}
+                src={AssignmentLogo}
+                alt="No Assignments"
+              />
+              <p>No assignments yet!</p>
+            </div>
+          ) : (
+            <div className={style.assignmentcontainer}>
+              {assignments.map((assignment) => (
+                <Assignment assignment={assignment} key={assignment._id} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

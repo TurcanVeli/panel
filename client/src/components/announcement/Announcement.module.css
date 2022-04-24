@@ -6,10 +6,6 @@
   padding: 3px;
 }
 
-.announcement:last-child {
-  border-bottom: 0.1px solid #d3d3d3;
-}
-
 .announcemententry:hover {
   background-color: #f5f5f5;
   cursor: pointer;

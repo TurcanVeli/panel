@@ -1,0 +1,30 @@
+.courseNavbarList {
+    margin-top: 4vh;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.courseNavbarItem {
+    display: flex;
+    align-items: center;
+    height: 15px;
+    width: 150px;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #ededed;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 100%;
+    transition: all 0.2s ease-in-out;
+}
+
+.courseNavbarItem:hover {
+    border-color: #3737f0;
+}
+
+.courseNavbarItem img {
+    height: 100%;
+    margin-right: 10px;
+}

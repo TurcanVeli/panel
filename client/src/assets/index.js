@@ -7,6 +7,8 @@ import Courses from "./courses.svg";
 import Files from "./files.svg";
 import Logout from "./logout.svg";
 import Delete from "./delete.svg";
+import Logo from "./logo.svg";
+import FileUpload from "./fileupload.svg";
 
 export {
   Account,
@@ -18,4 +20,6 @@ export {
   Files,
   Logout,
   Delete,
+  Logo,
+  FileUpload,
 };

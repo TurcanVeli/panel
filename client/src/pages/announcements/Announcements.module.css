@@ -1,13 +1,12 @@
 .main {
   display: flex;
+  flex-direction: row;
   margin: 0px;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .page {
-  display: flex;
-  flex-direction: column;
-  margin-left: 100px;
+  width: 100%;
 }
 
 .noAnnouncements {
@@ -50,4 +49,14 @@
 
 .addAnnouncement:hover {
   cursor: pointer;
+}
+
+.announcements {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+}
+
+.announcements:last-child{
+    border-bottom: 0.1px solid #d3d3d3;
 }

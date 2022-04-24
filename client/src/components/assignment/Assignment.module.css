@@ -24,6 +24,7 @@
 .assignmentcontainer {
   display: flex;
   width: 90vw;
+  height: 10vh;
 }
 
 .assignmentdetails {
@@ -38,6 +39,7 @@
 
 .description {
   margin: 0px;
+  height: 100%;
 }
 
 .duedate {
