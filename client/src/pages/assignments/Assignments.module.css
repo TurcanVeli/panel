@@ -1,12 +1,13 @@
 .main {
   display: flex;
+  flex-direction: row;
   margin: 0px;
+  overflow-x: hidden;
 }
 
 .page {
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
 }
 
 .noassignments {
@@ -20,10 +21,6 @@
 
 .noassignmentslogo {
   width: 70px;
-}
-
-.assignmentcontainer {
-  list-style: none;
 }
 
 .controls {
@@ -52,4 +49,10 @@
 
 .addassignment:hover {
   cursor: pointer;
+}
+
+.assignments {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
 }

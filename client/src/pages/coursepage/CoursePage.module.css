@@ -1,7 +1,11 @@
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
 .page {
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
 }
 
 .addStudent {
@@ -26,4 +30,9 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
+}
+
+.courseDetails {
+    display: flex;
+    flex-direction: column;
 }

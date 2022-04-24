@@ -7,6 +7,7 @@ import Announcement from "@components/announcement/Announcement.jsx";
 import Toast from "@components/toast/Toast.jsx";
 import AnnouncementLogo from "@assets/announcement.svg";
 import style from "./Announcements.module.css";
+import CourseNavbar from "@components/courseNavbar/CourseNavbar.jsx";
 
 function Announcements() {
   const [announcements, setAnnouncements] = useState([]);
@@ -47,6 +48,7 @@ function Announcements() {
   return (
     <div className={style.main}>
       <Sidebar />
+      <CourseNavbar/>
       <div className={style.page}>
         <div className={style.controls}>
           <Title title="Announcements" />
