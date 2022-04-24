@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Toast from "@components/toast/Toast.jsx";
-import Sidebar from "@components/sidebar/Sidebar.jsx";
-import Title from "@components/title/Title.jsx";
+import Toast from "@components/toast/Toast";
+import Sidebar from "@components/sidebar/Sidebar";
+import Title from "@components/title/Title";
 import styles from "./CoursePage.module.css";
 import Cookies from "js-cookie";
+import CourseNavbar from "@components/courseNavbar/CourseNavbar";
 
 function CoursePage() {
   const [course, setCourse] = useState({
@@ -38,21 +39,24 @@ function CoursePage() {
   }, []);
 
   return (
-    <div>
+    <div className={styles.main}>
       <Sidebar />
+      <CourseNavbar courseId={courseId} />
       <div className={styles.page}>
-        <div className={styles.controls}>
-          <Title title={course.name} />
-          {isInstructor && (
-            <button
-              className={styles.addStudent}
-              onClick={() => {
-                navigate("" + "add-student");
-              }}
-            >
-              Add Student
-            </button>
-          )}
+        <div className={styles.courseDetails}>
+          <div className={styles.controls}>
+            <Title title={course.name} />
+            {isInstructor && (
+              <button
+                className={styles.addStudent}
+                onClick={() => {
+                  navigate("" + "add-student");
+                }}
+              >
+                Add Student
+              </button>
+            )}
+          </div>
         </div>
       </div>
       <Toast ref={toast} />

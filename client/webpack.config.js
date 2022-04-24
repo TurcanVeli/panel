@@ -31,6 +31,7 @@ module.exports = () => {
       new webpack.DefinePlugin(envKeys),
     ],
     resolve: {
+      extensions: ["", ".js", ".jsx"],
       alias: {
         "@components": path.resolve(__dirname, "src/components"),
         "@assets": path.resolve(__dirname, "src/assets"),
