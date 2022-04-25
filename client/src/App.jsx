@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-import "./App.css";
 import { useEffect } from "react";
 
 function App() {

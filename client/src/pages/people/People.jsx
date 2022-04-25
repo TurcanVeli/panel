@@ -59,7 +59,9 @@ function People() {
               <li>
                 {person.name}
               </li>
-              Instructor
+              <div className={style.instructorType}>
+                Instructor
+              </div>
             </div>
           ))}
           {students.map(person => (
@@ -67,7 +69,9 @@ function People() {
               <li>
                 {person.name}
               </li>
-              Student
+              <div className={style.studentType}>
+                Student
+              </div>
             </div>
           ))}
         </div>
