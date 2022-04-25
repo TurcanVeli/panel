@@ -1,0 +1,61 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.addStudent {
+  background-color: #3737f0;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+  font-size: 100%;
+  font-weight: bold;
+  box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0;
+  position: fixed;
+  right: 1vw;
+  top: 1vw;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.peopleList {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  width: 60vw;
+}
+
+.peopleListItem {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+
+.instructorType {
+    color: #3737f0;
+}
+
+.studentType {
+    color: gray;
+}

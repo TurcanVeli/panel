@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Toast from "@components/toast/Toast";
 import Sidebar from "@components/sidebar/Sidebar";
 import Title from "@components/title/Title";
 import styles from "./CoursePage.module.css";
-import Cookies from "js-cookie";
 import CourseNavbar from "@components/courseNavbar/CourseNavbar";
 
 function CoursePage() {
@@ -13,8 +12,6 @@ function CoursePage() {
   });
   const courseId = useParams().courseId;
   const toast = useRef();
-  const isInstructor = Cookies.get("isInstructor") === "true";
-  const navigate = useNavigate();
   useEffect(() => {
     async function getCourse() {
       const response = await fetch(
@@ -46,16 +43,6 @@ function CoursePage() {
         <div className={styles.courseDetails}>
           <div className={styles.controls}>
             <Title title={course.name} />
-            {isInstructor && (
-              <button
-                className={styles.addStudent}
-                onClick={() => {
-                  navigate("" + "add-student");
-                }}
-              >
-                Add Student
-              </button>
-            )}
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ router.get("/", [authenticateToken], async (req, res) => {
     const student = await Student.findById(res.locals.userId);
     const instructor = await Instructor.findById(res.locals.userId);
     const user = student || instructor;
-    
+
     const courses = await Course.find({ _id: { $in: user.courses } });
 
     return res.status(200).json({ courses });
@@ -71,6 +71,19 @@ router.post(
         await course.save();
         await student.save();
         return res.status(200).json({ message: "Student added successfully" });
+    }
+);
+
+router.get(
+    "/:courseId/people",
+    [authenticateToken, verifyCourseExists],
+    async (req, res) => {
+        const course = res.locals.course;
+        const students = await Student.find({ _id: { $in: course.students } });
+        const instructors = await Instructor.find({
+            _id: { $in: course.instructors },
+        });
+        return res.status(200).json({ students, instructors });
     }
 );
 

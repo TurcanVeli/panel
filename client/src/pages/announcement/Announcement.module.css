@@ -1,6 +1,6 @@
 .main {
   display: flex;
-  margin: 0px;
+  margin: 0;
 }
 
 .page {
@@ -17,20 +17,20 @@
   flex-direction: column;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0;
   overflow-wrap: break-word;
   width: 50vw;
 }
 
 .card img {
-    width: 30px;
+  width: 30px;
 }
 
 .card h3 {
-    font-weight: 100;
-    font-size: 12pt;
+  font-weight: 100;
+  font-size: 12pt;
 }
 
 .content {
-    white-space: pre-wrap;
+  white-space: pre-wrap;
 }

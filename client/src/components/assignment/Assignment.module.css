@@ -33,16 +33,16 @@
 }
 
 .name {
-  margin: 0px;
+  margin: 0;
   font-weight: bold;
 }
 
 .description {
-  margin: 0px;
+  margin: 0;
   height: 100%;
 }
 
 .duedate {
-  margin: 0px;
+  margin: 0;
   font-size: small;
 }

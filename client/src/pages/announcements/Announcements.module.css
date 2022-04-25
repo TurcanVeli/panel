@@ -1,7 +1,7 @@
 .main {
   display: flex;
   flex-direction: row;
-  margin: 0px;
+  margin: 0;
   overflow-x: hidden;
 }
 
@@ -41,7 +41,7 @@
   border-radius: 5px;
   font-size: 100%;
   font-weight: bold;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0;
   position: fixed;
   right: 1vw;
   top: 1vw;
@@ -52,11 +52,11 @@
 }
 
 .announcements {
-    display: flex;
-    flex-direction: column;
-    width: 80vw;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
 }
 
-.announcements:last-child{
-    border-bottom: 0.1px solid #d3d3d3;
+.announcements:last-child {
+  border-bottom: 0.1px solid #d3d3d3;
 }

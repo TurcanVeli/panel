@@ -1,6 +1,6 @@
 .main {
   display: flex;
-  margin: 0px;
+  margin: 0;
 }
 
 .page {
@@ -52,7 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-color: rgb(95, 156, 194);
+  border-color: rgb(95 156 194);
 }
 
 .files img {
@@ -70,7 +70,7 @@
   align-items: center;
   justify-content: center;
   border-style: solid;
-  border-color: rgb(95, 156, 194);
+  border-color: rgb(95 156 194);
   width: 475px;
   height: fit-content;
   border-radius: 8px;
@@ -85,7 +85,7 @@
   border-radius: 5px;
   font-size: 100%;
   font-weight: bold;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0;
 }
 
 .submit:hover {
