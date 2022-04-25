@@ -1,6 +1,6 @@
 .main {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .page {
@@ -17,6 +17,6 @@
 }
 
 .courseDetails {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }

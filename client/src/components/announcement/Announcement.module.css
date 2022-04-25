@@ -30,18 +30,18 @@
 }
 
 .title {
-  margin: 0px;
+  margin: 0;
   font-weight: bold;
 }
 
 .content {
   height: 100%;
-  margin: 0px;
+  margin: 0;
   white-space: nowrap;
   overflow: hidden;
 }
 
 .date {
-  margin: 0px;
+  margin: 0;
   font-size: small;
 }

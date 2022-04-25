@@ -27,7 +27,7 @@
 .assignmentform input {
   display: flex;
   padding: 8px 16px;
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
   border: 1px solid #ededed;
   border-radius: 5px;
   font-size: 100%;
@@ -65,7 +65,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-color: rgb(95, 156, 194);
+  border-color: rgb(95 156 194);
 }
 
 .files:hover {
@@ -78,7 +78,7 @@
   align-items: center;
   justify-content: center;
   border-style: solid;
-  border-color: rgb(95, 156, 194);
+  border-color: rgb(95 156 194);
   width: 475px;
   height: fit-content;
   border-radius: 8px;
@@ -95,7 +95,7 @@
   font-size: 100%;
   font-weight: bold;
   margin: 8px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0;
 }
 
 .submit:hover {
