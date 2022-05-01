@@ -1,4 +1,13 @@
+.courseName {
+  font-size: 20px;
+  font-weight: 750;
+  color: black;
+  margin-bottom: 10px;
+}
+
 .courseNavbarList {
+  display: flex;
+  flex-direction: column;
   margin-top: 4vh;
   list-style: none;
   justify-content: space-between;
@@ -12,7 +21,7 @@
   height: 15px;
   width: 150px;
   padding: 10px;
-  margin: 10px;
+  margin: 5px;
   border: 2px solid #ededed;
   border-radius: 5px;
   cursor: pointer;
