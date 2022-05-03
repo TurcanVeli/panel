@@ -5,17 +5,18 @@ import PeopleLogo from "@assets/people.svg";
 import FilesLogo from "@assets/files.svg";
 import AssignmentLogo from "@assets/assignment.svg";
 import CoursesLogo from "@assets/courses.svg";
-import { useContext } from "react";
-import { CourseContext } from "@context/CourseContext";
 
 function CourseNavbar() {
-  const [courseName] = useContext(CourseContext);
   const navigate = useNavigate();
   const courseId = useParams().courseId;
   return (
     <div className={style.courseNavbar}>
       <ul className={style.courseNavbarList}>
-        <div className={style.courseName}>{courseName}</div>
+        <div className={style.courseName}>
+          {JSON.parse(localStorage.getItem("courseNames")).find(
+            (course) => course.split(":")[0] === courseId
+          ).split(":")[1]}
+        </div>
         <li
           className={style.courseNavbarItem}
           onClick={() => navigate(`/courses/${courseId}/`)}

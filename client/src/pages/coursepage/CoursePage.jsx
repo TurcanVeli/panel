@@ -1,14 +1,17 @@
-import { useEffect, useRef, useContext } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import Toast from "@components/toast/Toast";
 import Sidebar from "@components/sidebar/Sidebar";
 import Title from "@components/title/Title";
 import styles from "./CoursePage.module.css";
 import CourseNavbar from "@components/courseNavbar/CourseNavbar";
-import { CourseContext } from "@context/CourseContext";
 
 function CoursePage() {
-  const [courseName, setCourseName] = useContext(CourseContext);
+  const [course, setCourse] = useState({
+    name: "",
+    description: "",
+    creationDate: "",
+  });
   const courseId = useParams().courseId;
   const toast = useRef();
   useEffect(() => {
@@ -29,7 +32,7 @@ function CoursePage() {
         return;
       }
       const data = await response.json();
-      setCourseName(data.course.name);
+      setCourse(data.course);
     }
     getCourse();
   }, []);
@@ -41,7 +44,7 @@ function CoursePage() {
       <div className={styles.page}>
         <div className={styles.courseDetails}>
           <div className={styles.controls}>
-            <Title title={courseName} />
+            <Title title={course.name} />
           </div>
         </div>
       </div>
