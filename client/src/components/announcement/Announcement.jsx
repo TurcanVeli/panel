@@ -1,19 +1,18 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import AnnouncementLogo from "@assets/announcement.svg";
 import style from "./Announcement.module.css";
 
 function Announcement(props) {
-  const location = useLocation();
   const navigate = useNavigate();
   const { announcement } = props;
-  const course = location.pathname.split("/")[2];
+  const courseId = useParams().courseId;
   
   return ( 
     <li
       className={style.announcemententry}
       onClick={() => {
-        navigate(`/courses/${course}/announcements/${announcement._id}`);
+        navigate(`/courses/${courseId}/announcements/${announcement._id}`);
       }}
     >
       <div className={style.announcementcontainer}>

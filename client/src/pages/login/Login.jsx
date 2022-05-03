@@ -41,6 +41,7 @@ function Login() {
     Object.keys(Cookies.get()).forEach(function (cookieName) {
       Cookies.remove(cookieName);
     });
+    localStorage.removeItem("courseNames");
   }, []);
 
   return (

@@ -28,6 +28,8 @@ ReactDOM.render(
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/add-course" element={<AddCourse />} />
+        <Route path="*" element={<NotFound />} />
+
         <Route
           path="/courses/:courseId/assignments"
           element={<Assignments />}
@@ -58,9 +60,9 @@ ReactDOM.render(
           element={<Announcement />}
         />
         <Route path="/courses/:courseId/people/" element={<People />} />
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+    )
   </React.StrictMode>,
   document.getElementById("root")
 );

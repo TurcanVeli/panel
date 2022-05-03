@@ -20,6 +20,11 @@ function Dashboard() {
     });
     const data = await response.json();
     setCourses(data.courses);
+    localStorage.removeItem("courseNames");
+    localStorage.setItem(
+      "courseNames",
+      JSON.stringify(data.courses.map((course) => `${course._id}:${course.name}`))
+    );
   }
   useEffect(() => {
     if (!Cookies.get("token") || !Cookies.get("isInstructor")) {

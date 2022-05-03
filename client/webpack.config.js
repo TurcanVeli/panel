@@ -37,6 +37,7 @@ module.exports = () => {
         "@assets": path.resolve(__dirname, "src/assets"),
         "@pages": path.resolve(__dirname, "src/pages"),
         "@public": path.resolve(__dirname, "public"),
+        "@context": path.resolve(__dirname, "src/context"),
       }
     },
     module: {

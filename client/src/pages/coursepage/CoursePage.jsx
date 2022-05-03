@@ -9,6 +9,8 @@ import CourseNavbar from "@components/courseNavbar/CourseNavbar";
 function CoursePage() {
   const [course, setCourse] = useState({
     name: "",
+    description: "",
+    creationDate: "",
   });
   const courseId = useParams().courseId;
   const toast = useRef();
@@ -38,7 +40,7 @@ function CoursePage() {
   return (
     <div className={styles.main}>
       <Sidebar />
-      <CourseNavbar courseId={courseId} />
+      <CourseNavbar />
       <div className={styles.page}>
         <div className={styles.courseDetails}>
           <div className={styles.controls}>

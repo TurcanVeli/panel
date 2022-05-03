@@ -48,7 +48,7 @@ function Announcements() {
   return (
     <div className={style.main}>
       <Sidebar />
-      <CourseNavbar/>
+      <CourseNavbar />
       <div className={style.page}>
         <div className={style.controls}>
           <Title title="Announcements" />
@@ -65,7 +65,7 @@ function Announcements() {
         </div>
         {announcements.length === 0 ? (
           <div className={style.noAnnouncements}>
-            <img src={AnnouncementLogo}  alt="Announcement Logo" />
+            <img src={AnnouncementLogo} alt="Announcement Logo" />
             <p>No announcements yet!</p>
           </div>
         ) : (

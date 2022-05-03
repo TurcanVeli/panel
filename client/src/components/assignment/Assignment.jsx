@@ -1,13 +1,12 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import AssignmentLogo from "@assets/assignment.svg";
 import style from "./Assignment.module.css";
 
 function Assignment(props) {
-  const location = useLocation();
   const navigate = useNavigate();
   const { assignment } = props;
-  const course = location.pathname.split("/")[2];
+  const course = useParams().courseId;
 
   return (
     <li
