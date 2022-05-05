@@ -29,7 +29,6 @@ function Assignments() {
       }
     );
     let json = await result.json();
-
     setAssignments(json);
   }
 
@@ -68,9 +67,13 @@ function Assignments() {
             </div>
           ) : (
             <div className={style.assignmentcontainer}>
-              {assignments.map((assignment) => (
-                <Assignment assignment={assignment} key={assignment._id} />
-              ))}
+              {assignments
+                .sort((a, b) => {
+                  return a.dueDate > b.dueDate ? 1 : -1;
+                })
+                .map((assignment) => (
+                  <Assignment assignment={assignment} key={assignment._id} />
+                ))}
             </div>
           )}
         </div>

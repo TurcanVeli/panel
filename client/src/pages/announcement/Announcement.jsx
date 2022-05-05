@@ -1,4 +1,4 @@
-import styles from "./Announcement.module.css";
+import style from "./Announcement.module.css";
 import AnnouncementLogo from "@assets/announcement.svg";
 import Sidebar from "@components/sidebar/Sidebar.jsx";
 import { useEffect, useState } from "react";
@@ -34,14 +34,14 @@ function Announcement() {
   return (
     <div>
       <Sidebar />
-      <div className={styles.page}>
-        <div className={styles.card}>
+      <div className={style.page}>
+        <div className={style.card}>
           <h2>
             {" "}
             <img src={AnnouncementLogo}></img> {announcement.title}
           </h2>
           <h3>{announcement.publisher} </h3>
-          <div className={styles.content}>{announcement.description}</div>
+          <div className={style.content}>{announcement.description}</div>
         </div>
       </div>
     </div>

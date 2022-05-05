@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "@components/sidebar/Sidebar.jsx";
-import styles from "./Dashboard.module.css";
+import style from "./Dashboard.module.css";
 import CourseCard from "@components/courseCard/CourseCard.jsx";
 import Title from "@components/title/Title.jsx";
 
@@ -34,16 +34,16 @@ function Dashboard() {
     setType(Cookies.get("isInstructor") === "true");
   }, [navigate]);
   return (
-    <div className={styles.dashboard}>
+    <div className={style.dashboard}>
       <div>
         <Sidebar />
       </div>
 
-      <div className={styles.controls}>
+      <div className={style.controls}>
         <Title title="Dashboard" />
         {type === true && (
           <button
-            className={styles.addCourse}
+            className={style.addCourse}
             onClick={() => {
               navigate("/add-course");
             }}
@@ -52,7 +52,7 @@ function Dashboard() {
           </button>
         )}
       </div>
-      <div className={styles.courseGrid}>
+      <div className={style.courseGrid}>
         {courses.map((course, index) => (
           <CourseCard course={course} key={index} />
         ))}

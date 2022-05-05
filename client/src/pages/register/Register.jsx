@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./Register.module.css";
+import style from "./Register.module.css";
 import logo from "@assets/logo.svg";
 import Cookies from "js-cookie";
 import Toast from "@components/toast/Toast.jsx";
@@ -52,11 +52,11 @@ function Register() {
   }, []);
 
   return (
-    <div className={styles.registerPage}>
-      <img className={styles.logo} src={logo}></img>
+    <div className={style.registerPage}>
+      <img className={style.logo} src={logo}></img>
       <h1 style={{"margin": "8px"}}>Register</h1>
       <form
-        className={styles.authForm}
+        className={style.authForm}
         onSubmit={handleRegister}
         onChange={() => {
           setShowLoginButton(false);
@@ -86,7 +86,7 @@ function Register() {
             setUser({ ...user, password: event.target.value })
           }
         />
-        <div className={styles.radioGroup}>
+        <div className={style.radioGroup}>
           <label htmlFor="student">
             <input
               id="student"
@@ -109,11 +109,11 @@ function Register() {
           </label>
         </div>
         <div>
-          <button className={styles.registerButton} onClick={handleRegister}>
+          <button className={style.registerButton} onClick={handleRegister}>
             Register
           </button>
           <button
-            className={styles.loginButton}
+            className={style.loginButton}
             onClick={handleLogin}
             style={{ display: showLoginButton ? "block" : "none" }}
           >

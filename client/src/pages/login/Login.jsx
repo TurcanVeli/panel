@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./Login.module.css";
+import style from "./Login.module.css";
 import logo from "@assets/logo.svg";
 import Cookies from "js-cookie";
 import Toast from "@components/toast/Toast.jsx";
@@ -45,11 +45,11 @@ function Login() {
   }, []);
 
   return (
-    <div className={styles.loginPage}>
-      <img className={styles.logo} src={logo}></img>
+    <div className={style.loginPage}>
+      <img className={style.logo} src={logo}></img>
       <h1 style={{"margin": "8px"}}>Login</h1>
       <form
-        className={styles.authForm}
+        className={style.authForm}
         onSubmit={handleLogin}
       >
         <input
@@ -71,10 +71,10 @@ function Login() {
           }}
         />
         <div>
-          <button className={styles.loginButton} onClick={handleLogin}>
+          <button className={style.loginButton} onClick={handleLogin}>
             Login
           </button>
-          <button className={styles.registerButton} onClick={handleRegister}>
+          <button className={style.registerButton} onClick={handleRegister}>
             Register
           </button>
         </div>
