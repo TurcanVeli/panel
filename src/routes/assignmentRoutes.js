@@ -3,7 +3,6 @@ const authenticateToken = require("../middleware/authenticateToken");
 const verifyCourseExists = require("../middleware/verifyCourseExists");
 const verifyInstructor = require("../middleware/verifyInstructor");
 const verifyAssignmentExists = require("../middleware/verifyAssignmentExists");
-const { Course } = require("../models/course");
 const fs = require("fs");
 
 router.post(
@@ -14,10 +13,7 @@ router.post(
 
         const { name, description, dueDate, maxPoints } = req.body;
 
-        const course = await Course.findById(courseId);
-        if (!course) {
-            return res.status(404).send("Course not found");
-        }
+        const course = res.locals.course;
 
         course.assignments.push({
             name,
@@ -37,9 +33,15 @@ router.get(
     async (req, res) => {
         const assignmentId = req.params.assignmentId;
 
-        const course = res.locals.course;
+        let course = res.locals.course;
 
-        const assignment = course.assignments.id(assignmentId);
+        let assignment = course.assignments.id(assignmentId);
+
+        assignment.submissions = res.locals.isInstructor
+            ? assignment.submissions
+            : assignment.submissions.filter(
+                (submission) => submission.studentId.toString() === res.locals.userId
+            );
         if (!assignment) {
             return res.status(404).send("Assignment not found");
         }
@@ -52,14 +54,18 @@ router.get(
     "/:courseId/assignments",
     [authenticateToken, verifyCourseExists],
     async (req, res) => {
-        const course = res.locals.course;
-
+        let course = res.locals.course;
+        course.assignments.forEach((assignment) => {
+            assignment.submissions = assignment.submissions.filter(
+                (submission) => submission.studentId.toString() === res.locals.userId
+            );
+        });
         res.status(200).json(course.assignments);
     }
 );
 
 router.delete(
-    "/:courseId/assignments/:assignmentId",
+    "/:courseId/assignment/:assignmentId",
     [
         authenticateToken,
         verifyCourseExists,
@@ -77,10 +83,9 @@ router.delete(
 );
 
 router.post(
-    "/:courseId/assignments/:assignmentId/submit",
+    "/:courseId/assignment/:assignmentId/submit",
     [authenticateToken, verifyCourseExists, verifyAssignmentExists],
     async (req, res) => {
-
         const { files } = req.body;
 
         if (!files) {

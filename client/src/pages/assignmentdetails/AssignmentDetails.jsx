@@ -82,7 +82,7 @@ function AssignmentDetails() {
     const uploadJson = await uploadRes.json();
 
     const submitRes = await fetch(
-      `${process.env.API_URL}/api/courses/${courseId}/assignments/${assignmentId}/submit`,
+      `${process.env.API_URL}/api/courses/${courseId}/assignment/${assignmentId}/submit`,
       {
         method: "POST",
         headers: {
@@ -97,7 +97,7 @@ function AssignmentDetails() {
     );
 
     if (submitRes.status !== 200) {
-      toast.current.show("Error submitting assignment!");
+      toast.current.show("Error submitting assignment!");	
       return;
     }
 

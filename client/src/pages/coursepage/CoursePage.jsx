@@ -7,13 +7,12 @@ import style from "./CoursePage.module.css";
 import CourseNavbar from "@components/courseNavbar/CourseNavbar";
 
 function CoursePage() {
-  var assignmentStatus = false;
   const navigate = useNavigate();
   const [course, setCourse] = useState({
     name: "",
     description: "",
     creationDate: "",
-    assignments: [],
+    upcomingAssignments: [],
   });
   const courseId = useParams().courseId;
   const toast = useRef();
@@ -35,7 +34,9 @@ function CoursePage() {
         return;
       }
       const data = await response.json();
-      setCourse(data.course);
+      let tempCourse = data.course;
+      tempCourse.upcomingAssignments = data.upcomingAssignments;
+      setCourse(tempCourse);
     }
     getCourse();
   }, []);
@@ -49,58 +50,53 @@ function CoursePage() {
           <div className={style.controls}>
             <Title title={course.name} />
           </div>
-          <div className={style.upcomingListContainer}>
-            <ul className={style.upcomingList}>
-              <h3>Upcoming Assignmnets</h3>
-              {course.assignments
-                .filter(
-                  (assignment) =>
-                    new Date(assignment.dueDate).getTime() >
-                    new Date(Date.now()).setDate(
-                      new Date(Date.now()).getDate() - 2
-                    )
-                )
-                .sort((a, b) => {
-                  return a.dueDate > b.dueDate ? 1 : -1;
-                })
-                .map((assignment) => {
-                  assignmentStatus =
-                    new Date(assignment.dueDate).getTime() < Date.now() &&
-                    assignment.submissions.length === 0;
+          <div className={style.upcomingTableContainer}>
+            <table className={style.upcomingTable}>
+              <caption>
+                <h3>Upcoming Assignments</h3>
+              </caption>
+              <tbody>
+                {course.upcomingAssignments.map((assignment) => {
+                  console.log(assignment);
                   return (
-                    <li
-                      className={style.upcomingItem}
+                    <tr
                       key={assignment._id}
                       onClick={() => {
                         navigate(
                           `/courses/${courseId}/assignment/${assignment._id}`
                         );
                       }}
+                      className={style.upcomingTableRow}
                     >
-                      <div
-                        className={`
-                            ${style.upcomingItemStatus}
-                            ${
-                    assignmentStatus
-                      ? style.upcomingItemStatusOverdue
-                      : ""
-                    }`}
-                      >
-                        {assignmentStatus ? "X" : "✔"}
-                      </div>
-                      <div className={style.upcomingItemTitle}>
+                      <td className={style.upcomingTableCell}>
+                        <div
+                          className={`${style.upcomingStatusIndicator} ${
+                            assignment.status === "Overdue" ? style.overdue : ""
+                          } ${
+                            assignment.status === "On Time" ? style.onTime : ""
+                          } ${assignment.status === "Late" ? style.late : ""}`}
+                        >
+                          {
+                            {
+                              Clear: "",
+                              Late: "!",
+                              Overdue: "X",
+                              "On Time": "✔",
+                            }[assignment.status]
+                          }
+                        </div>
+                      </td>
+                      <td className={style.upcomingTableCell}>
                         {assignment.name}
-                      </div>
-                      <div className={style.upcomingItemDueDate}>
-                        {new Date(assignment.dueDate).toUTCString()}
-                      </div>
-                      <div className={style.upcomingItemMaxPoints}>
-                        {assignment.maxPoints}
-                      </div>
-                    </li>
+                      </td>
+                      <td className={style.upcomingTableCell}>
+                        {new Date(assignment.dueDate).toLocaleString()}
+                      </td>
+                    </tr>
                   );
                 })}
-            </ul>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

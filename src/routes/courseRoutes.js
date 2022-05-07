@@ -37,8 +37,42 @@ router.get(
     "/:courseId",
     [authenticateToken, verifyCourseExists],
     async (req, res) => {
-        const course = res.locals.course;
-        return res.status(200).json({ course });
+        let course = res.locals.course;
+        // Filtering the submissions to only the ones submitted by the student.
+        // If the user is an instructor, they can see all submissions.
+        if (!res.locals.isInstructor) {
+            course.assignments.forEach((assignment) => {
+                assignment.submissions = assignment.submissions.filter((submission) => {
+                    return submission.studentId.toString() === res.locals.userId;
+                });
+            });
+        }
+        // Sorting the assignments by their status.
+        let upcomingAssignments = course.assignments.filter(
+            (assignment) =>
+                new Date(assignment.dueDate).getTime() + 86400000 * 5 > Date.now()
+        );
+        upcomingAssignments.sort((a, b) => {
+            return a.dueDate - b.dueDate;
+        });
+        let status = "";
+        upcomingAssignments.forEach((assignment) => {
+            if (assignment.submissions.length !== 0) {
+                assignment.submissions.forEach((submission) => {
+                    status =
+            submission.submissionDate < assignment.dueDate
+                ? "On Time"
+                : "Late";
+                });
+            } else {
+                status = assignment.dueDate > Date.now() ? "Clear" : "Overdue";
+            }
+            assignment._doc.status = status;
+        });
+        course.announcements = undefined;
+        course.files = undefined;
+
+        return res.status(200).json({ course, upcomingAssignments });
     }
 );
 
