@@ -34,13 +34,14 @@
 }
 
 .upcomingTable {
-  width: 50%;
+  width: 60%;
   border-top: 1px solid #ededed;
   border-bottom: 1px solid #ededed;
   border-left: 2px solid #ededed;
   border-right: 2px solid #ededed;
   border-radius: 5px;
   border-spacing: 0;
+  overflow: hidden;
 }
 
 .upcomingTableRow:hover {
@@ -50,7 +51,7 @@
 
 .upcomingStatusIndicator {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -62,7 +63,6 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
-
 .late {
   background-color: #ffe044;
   border: 2px solid #907800;
@@ -80,16 +80,19 @@
   border: 2px solid #940000;
   color: white;
 }
-
 .upcomingTableCell {
   border: 1px solid #ededed;
-  padding-left: 10px
+  padding-left: 10px;
+  overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .upcomingTableCell:first-child {
-  border-left: none;
-  border-right: none;
+  border: none;
+  border-bottom: 2px solid #ededed;
   width: 30px;
+  height: 30px;
 }
 
 .upcomingTableCell:nth-child(2) {
