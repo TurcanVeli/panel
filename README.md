@@ -51,6 +51,8 @@
     <li> Each lesson has announcements, grades, lesson files, assignments, and discussions part. </li>
     <li> An instructor can add a new announcement and assignments to the lesson. </li>
     <li> The instructor can choose the uploading file types and the due dates for the assignments. </li>
+    <li> And Students can see the end of their announcements and assignments at upcoming section. </li>
+    <li> Students and their instructor can discuss about assigment in comments on side of submission.</li>
     <li> The instructor can grade the student's assignments. </li>
     <li> Both instructor and student can creat. </li>
     <li> And students and instructors can add comments for announcements and discussions. </li>
