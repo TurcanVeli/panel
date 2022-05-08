@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import styles from "./CourseCard.module.css";
+import style from "./CourseCard.module.css";
 import * as svgs from "@assets";
 import { useNavigate } from "react-router-dom";
 
@@ -34,20 +34,20 @@ function CourseCard(props) {
   };
 
   return (
-    <div className={styles.courseCard}>
+    <div className={style.courseCard}>
       <div
-        className={styles.courseCardUpper}
+        className={style.courseCardUpper}
         style={cardColorStyle}
         onClick={() => {
           navigate(`/courses/${props.course._id}`);
         }}
       ></div>
-      <div className={styles.courseCardLower}>
-        <div className={styles.courseName}>{props.course.name}</div>
-        <div className={styles.courseSemester}>{getSemester()}</div>
-        <div className={styles.actions}>
+      <div className={style.courseCardLower}>
+        <div className={style.courseName}>{props.course.name}</div>
+        <div className={style.courseSemester}>{getSemester()}</div>
+        <div className={style.actions}>
           <div
-            className={styles.actionItem}
+            className={style.actionItem}
             onClick={() => {
               navigate(`/courses/${props.course._id}/announcements`);
             }}
@@ -55,7 +55,7 @@ function CourseCard(props) {
             <img src={svgs.Announcement}></img>
           </div>
           <div
-            className={styles.actionItem}
+            className={style.actionItem}
             onClick={() => {
               navigate(`/courses/${props.course._id}/assignments`);
             }}
@@ -63,7 +63,7 @@ function CourseCard(props) {
             <img src={svgs.Assignment}></img>
           </div>
           <div
-            className={styles.actionItem}
+            className={style.actionItem}
             onClick={() => {
               navigate(`/courses/${props.course._id}/files`);
             }}

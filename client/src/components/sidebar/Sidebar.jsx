@@ -1,4 +1,4 @@
-import styles from "./Sidebar.module.css";
+import style from "./Sidebar.module.css";
 import * as svgs from "@assets";
 import { useNavigate } from "react-router-dom";
 
@@ -22,18 +22,18 @@ function Sidebar() {
     },
   ];
   return (
-    <div className={styles.sidebar}>
-      <ul className={styles.sidebarList}>
+    <div className={style.sidebar}>
+      <ul className={style.sidebarList}>
         {sidebarItems.map((item) => (
           <li
-            className={styles.sidebarItem}
+            className={style.sidebarItem}
             key={item.name}
             onClick={() => {
               navigate(item.path);
             }}
           >
-            <img src={item.icon} className={styles.sidebarIcon}></img>
-            <div className={styles.sidebarText}>{item.name}</div>
+            <img src={item.icon} className={style.sidebarIcon}></img>
+            <div className={style.sidebarText}>{item.name}</div>
           </li>
         ))}
       </ul>

@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Toast from "@components/toast/Toast";
 import Sidebar from "@components/sidebar/Sidebar";
 import Title from "@components/title/Title";
-import styles from "./CoursePage.module.css";
+import style from "./CoursePage.module.css";
 import CourseNavbar from "@components/courseNavbar/CourseNavbar";
 
 function CoursePage() {
+  const navigate = useNavigate();
   const [course, setCourse] = useState({
     name: "",
     description: "",
     creationDate: "",
+    upcomingAssignments: [],
   });
   const courseId = useParams().courseId;
   const toast = useRef();
@@ -32,19 +34,69 @@ function CoursePage() {
         return;
       }
       const data = await response.json();
-      setCourse(data.course);
+      let tempCourse = data.course;
+      tempCourse.upcomingAssignments = data.upcomingAssignments;
+      setCourse(tempCourse);
     }
     getCourse();
   }, []);
 
   return (
-    <div className={styles.main}>
+    <div className={style.main}>
       <Sidebar />
       <CourseNavbar />
-      <div className={styles.page}>
-        <div className={styles.courseDetails}>
-          <div className={styles.controls}>
+      <div className={style.page}>
+        <div className={style.courseDetails}>
+          <div className={style.controls}>
             <Title title={course.name} />
+          </div>
+          <div className={style.upcomingTableContainer}>
+            <table className={style.upcomingTable}>
+              <caption>
+                <h3>Upcoming Assignments</h3>
+              </caption>
+              <tbody>
+                {course.upcomingAssignments.map((assignment) => {
+                  console.log(assignment);
+                  return (
+                    <tr
+                      key={assignment._id}
+                      onClick={() => {
+                        navigate(
+                          `/courses/${courseId}/assignment/${assignment._id}`
+                        );
+                      }}
+                      className={style.upcomingTableRow}
+                    >
+                      <td className={style.upcomingTableCell}>
+                        <div
+                          className={`${style.upcomingStatusIndicator} ${
+                            assignment.status === "Overdue" ? style.overdue : ""
+                          } ${
+                            assignment.status === "On Time" ? style.onTime : ""
+                          } ${assignment.status === "Late" ? style.late : ""}`}
+                        >
+                          {
+                            {
+                              Clear: "",
+                              Late: "!",
+                              Overdue: "X",
+                              "On Time": "✔",
+                            }[assignment.status]
+                          }
+                        </div>
+                      </td>
+                      <td className={style.upcomingTableCell}>
+                        {assignment.name}
+                      </td>
+                      <td className={style.upcomingTableCell}>
+                        {new Date(assignment.dueDate).toLocaleString()}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

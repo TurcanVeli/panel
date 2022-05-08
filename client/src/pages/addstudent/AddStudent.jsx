@@ -1,4 +1,4 @@
-import styles from "./AddStudent.module.css";
+import style from "./AddStudent.module.css";
 import Title from "@components/title/Title.jsx";
 import Toast from "@components/toast/Toast.jsx";
 import { useRef, useState } from "react";
@@ -34,13 +34,13 @@ function AddStudent() {
   }
 
   return (
-    <div className={styles.main}>
+    <div className={style.main}>
       <Sidebar />
-      <div className={styles.page}>
+      <div className={style.page}>
         <Title title="Add Student" />
-        <form onSubmit={addStudent} className={styles.studentForm}>
+        <form onSubmit={addStudent} className={style.studentForm}>
           <input
-            className={styles.textbox}
+            className={style.textbox}
             type="text"
             placeholder="Student Email"
             onChange={(event) => {
@@ -53,7 +53,7 @@ function AddStudent() {
                 ? { backgroundColor: "#3737f0" }
                 : { backgroundColor: "lightgrey" }
             }
-            className={styles.submit}
+            className={style.submit}
             onClick={addStudent}
           >
             Submit
