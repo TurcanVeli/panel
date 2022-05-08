@@ -65,7 +65,7 @@ function CourseCard(props) {
           <div
             className={styles.actionItem}
             onClick={() => {
-              navigate("/files");
+              navigate(`/courses/${props.course._id}/files`);
             }}
           >
             <img src={svgs.Files}></img>

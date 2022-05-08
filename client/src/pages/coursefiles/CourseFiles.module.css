@@ -1,0 +1,26 @@
+.main {
+  display: flex;
+  margin: 0;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  margin-left: 35px;
+}
+
+.page > * {
+  margin-left: 35px;
+}
+
+.empty .logo {
+  width: 70px;
+}
+
+.files {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
+  height: 90vh;
+}
